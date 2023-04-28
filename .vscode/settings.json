@@ -1,0 +1,12 @@
+{
+	"makefile.extensionOutputFolder": "./.vscode",
+	"files.associations": {
+		"*.js": "javascriptreact",
+		"*.hbs": "handlebars",
+		"*.c": "c",
+		"sstream": "c",
+		"libft.h": "c"
+	},
+	"editor.fontLigatures": false,
+	"lldb.dbgconfig": {}
+}

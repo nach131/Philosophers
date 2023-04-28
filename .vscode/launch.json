@@ -1,0 +1,29 @@
+{
+	// Use IntelliSense para saber los atributos posibles.
+	// Mantenga el puntero para ver las descripciones de los existentes atributos.
+	// Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "philo",
+			// "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+			"program": "${workspaceFolder}/sources/philo",
+			// "args": ["30","16","6","19","5","28","26","11","25","20","9","18","3","12","4","1","2","10","7","13","17","29","24","14","23","15","22","21","8","27"],
+			"stopOnEntry": false,
+			"cwd": "${fileDirname}"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "a.out",
+			// "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+			"program": "${fileDirname}/a.out",
+			// "args": ["4", "7", "9", "6", "3", "5", "10", "1", "2", "8"],
+			// "args": ["3", "2", "1"],
+			"stopOnEntry": false,
+			"cwd": "${fileDirname}"
+		}
+	]
+}
