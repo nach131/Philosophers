@@ -45,7 +45,6 @@ UTILS_DIR	= utils/
 
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ SOURCES ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄#
 
-
 MAIN_FILES	=	main
 UTILS_FILES	= file_utils my_libft 
 
@@ -59,6 +58,9 @@ SRCS_UTILS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_UTILS_FILES)))
 OBJS_UTILS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_UTILS_FILES)))
 DEPS_UTILS = $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_UTILS_FILES)))
 
+ALL_OBJS += $(OBJS_MAIN) $(OBJS_UTILS)
+DEPS += $(DEPS_MAIN) $(DEPS_UTILS)
+
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ RULES ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄#
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c Makefile
@@ -68,7 +70,7 @@ $(OBJ_DIR)%.o : $(SRC_DIR)%.c Makefile
 
 all: $(NAME)
 
-$(NAME):	$(OBJS_MAIN) $(OBJS_UTILS) 
+$(NAME):	$(ALL_OBJS)
 			@$(CC) $(CFLAGS) $^ -o $@
 			@echo "$(ORANGE) Compilando Ejecutable  ➟  $(RED)$@ $(WHITE)"
 
