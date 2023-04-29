@@ -9,7 +9,7 @@
 <img alt="total-clone" src="https://img.shields.io/badge/clone-14-blue">
 <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/nach131/Philosophers">
 <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/nach131/Philosophers">
-<img alt="GitHub repo file count" src="https://img.shields.io/github/directory-file-count/nach131/Philosophers/src">
+<img alt="GitHub repo file count" src="https://img.shields.io/github/directory-file-count/nach131/Philosophers/source">
 <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/nach131/Philosophers">
 <img alt="license-MIT" src="https://img.shields.io/badge/license-MIT-blue">
 </p>
