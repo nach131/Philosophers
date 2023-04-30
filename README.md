@@ -106,3 +106,19 @@ La función `pthread_create` se utiliza para crear un nuevo hilo en un programa 
 - `arg` : un puntero a un argumento que se pasará a la función start_routine como su único argumento.La función devuelve 0 si el hilo se crea correctamente, o un valor de error en caso contrario.
 
 </details>
+
+### [pthread_detach](funciones/permitidas/pthread_detach.c)
+
+```c
+int pthread_detach(pthread_t thread);
+```
+<details>
+  <summary>Descripción</summary>
+
+indicar al sistema que el hilo especificado debe ejecutarse de forma independiente, sin necesidad de que el hilo principal lo espere para realizar la limpieza de los recursos que utiliza.
+
+En otras palabras, con esta función se puede liberar la memoria y otros recursos asociados al hilo de forma automática, sin necesidad de llamar a `pthread_join`.
+
+- `thread` es el identificador del hilo que se desea desvincular.
+
+</details>
