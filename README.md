@@ -106,3 +106,54 @@ int	main(void)
 }
 ```
 </details>
+
+### [gettimeofday](funciones/permitidas/gettimeofday.c)
+```c
+int gettimeofday(struct timeval *tv, struct timezone *tz);
+```
+<details>
+  <summary>Descripción</summary>
+se utiliza para obtener el tiempo actual del sistema con una resolución de microsegundos
+
+- `tv` : Es un puntero a una estructura timeval que se llenará con el tiempo actual.
+- `tz` : Es un puntero a una estructura timezone.Este parámetro es obsoleto y
+ no se utiliza en la mayoría de las implementaciones de gettimeofday.
+
+```c
+struct	timeval
+{
+	time_t tv_sec;       /* segundos */
+	suseconds_t tv_usec; /* microsegundos */
+};
+```
+La función gettimeofday es comúnmente utilizada para medir el tiempo transcurrido entre dos eventos en un programa, ya que tiene una resolución de microsegundos.
+
+</details>
+
+<details>
+  <summary>Código</summary>
+
+	```c
+	int	main(void)
+{
+	long	tiempo_transcurrido;
+	int		i;
+
+	struct timeval inicio, fin;
+	gettimeofday(&inicio, NULL); // Tiempo de inicio
+	// Código que se desea medir
+	i = 0;
+	while (i++ < 100000)
+	{
+		;
+	}
+	gettimeofday(&fin, NULL); // Tiempo de fin
+	tiempo_transcurrido = (fin.tv_sec - inicio.tv_sec) * 1000000L + (fin.tv_usec
+			- inicio.tv_usec);
+	printf("Tiempo transcurrido: %ld microsegundos.\n", tiempo_transcurrido);
+	printf("Tiempo transcurrido: %ld segundos.\n", tiempo_transcurrido
+			/ 1000000);
+	return (0);
+}
+```
+</details>
