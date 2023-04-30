@@ -34,15 +34,15 @@ El programa admite 5 argumentos.
 
 ## Funciones permitidas
 
-### [memset](funciones/memset.c)
+### [memset](funciones/permitidas/memset.c)
 
 ```c
- void *memset(void *ptr, int value, size_t num);
+void *memset(void *ptr, int value, size_t num);
 ```
 <details>
   <summary>Descripción</summary>
 
-La función memset es comúnmente utilizada para inicializar matrices y otros tipos de bloques de memoria.
+La función memset se utiliza para inicializar matrices y otros tipos de bloques de memoria.
 
 Por ejemplo,el siguiente código utiliza memset para inicializar una matriz de enteros con el valor 0:
 
@@ -52,8 +52,6 @@ Por ejemplo,el siguiente código utiliza memset para inicializar una matriz de e
   <summary>Código</summary>
 
 ```c
-#include <stdio.h>
-#include <string.h>
 
 int	main(void)
 {
@@ -67,5 +65,44 @@ int	main(void)
 	return (0);
 }
 ```
+</details>
 
+### [usleep](funciones/permitidas/usleep.c)
+
+```c
+int usleep(useconds_t usec);
+```
+<details>
+  <summary>Descripción</summary>
+
+- `usec`: Es el número de microsegundos durante los cuales el programa debe detenerse.
+
+La función usleep es útil en situaciones en las que es necesario pausar el programa por un corto período de tiempo.
+
+Se puede usar para controlar la velocidad a la que se envían datos a través de una conexión de red o para limitar la velocidad  de procesamiento de una aplicación.
+
+</details>
+<details>
+  <summary>Código</summary>
+
+```c
+int	main(void)
+{
+	int	i;
+
+	printf("Inicio del programa.\n");
+	i = 0;
+	while (i++ < 100000)
+	{
+		if (i == 5000)
+		{
+			printf("\tSE DETIENE\n");
+			usleep(1000000); // Espera 1 segundo (1,000,000 microsegundos)}
+		}
+		printf("%d\n", i);
+	}
+	printf("Fin del programa.\n");
+	return (0);
+}
+```
 </details>
