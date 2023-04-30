@@ -48,25 +48,6 @@ Por ejemplo,el siguiente código utiliza memset para inicializar una matriz de e
 
 </details>
 
-<details>
-  <summary>Código</summary>
-
-```c
-
-int	main(void)
-{
-	int	myArray[10];
-	int	i;
-
-	memset(myArray, 0, sizeof(myArray));
-	i = -1;
-	while (++i < 10)
-		printf("%d: %d\n", i, myArray[i]);
-	return (0);
-}
-```
-</details>
-
 ### [usleep](funciones/permitidas/usleep.c)
 
 ```c
@@ -81,30 +62,6 @@ La función usleep es útil en situaciones en las que es necesario pausar el pro
 
 Se puede usar para controlar la velocidad a la que se envían datos a través de una conexión de red o para limitar la velocidad  de procesamiento de una aplicación.
 
-</details>
-<details>
-  <summary>Código</summary>
-
-```c
-int	main(void)
-{
-	int	i;
-
-	printf("Inicio del programa.\n");
-	i = 0;
-	while (i++ < 100000)
-	{
-		if (i == 5000)
-		{
-			printf("\tSE DETIENE\n");
-			usleep(1000000); // Espera 1 segundo (1,000,000 microsegundos)}
-		}
-		printf("%d\n", i);
-	}
-	printf("Fin del programa.\n");
-	return (0);
-}
-```
 </details>
 
 ### [gettimeofday](funciones/permitidas/gettimeofday.c)
@@ -130,34 +87,6 @@ La función gettimeofday es comúnmente utilizada para medir el tiempo transcurr
 
 </details>
 
-<details>
-  <summary>Código</summary>
-
-```c
-int	main(void)
-{
-	long	tiempo_transcurrido;
-	int		i;
-
-	struct timeval inicio, fin;
-	gettimeofday(&inicio, NULL); // Tiempo de inicio
-	// Código que se desea medir
-	i = 0;
-	while (i++ < 100000)
-	{
-		;
-	}
-	gettimeofday(&fin, NULL); // Tiempo de fin
-	tiempo_transcurrido = (fin.tv_sec - inicio.tv_sec) * 1000000L + (fin.tv_usec
-			- inicio.tv_usec);
-	printf("Tiempo transcurrido: %ld microsegundos.\n", tiempo_transcurrido);
-	printf("Tiempo transcurrido: %ld segundos.\n", tiempo_transcurrido
-			/ 1000000);
-	return (0);
-}
-```
-</details>
-
 ### [pthread_create](funciones/permitidas/pthread_create.c)
 
 ```c
@@ -176,27 +105,4 @@ La función `pthread_create` se utiliza para crear un nuevo hilo en un programa 
 
 - `arg` : un puntero a un argumento que se pasará a la función start_routine como su único argumento.La función devuelve 0 si el hilo se crea correctamente, o un valor de error en caso contrario.
 
-</details>
-
-<details>
-  <summary>Código</summary>
-
-```c
-
-void	*funcion_hilo(void *arg)
-{
-	printf("\tHola desde el hilo\n");
-	pthread_exit(NULL);
-}
-
-int	main(void)
-{
-	pthread_t	id_hilo;
-
-	pthread_create(&id_hilo, NULL, funcion_hilo, NULL);
-	printf("Hola desde el hilo principal\n");
-	pthread_exit(NULL);
-}
-
-```
 </details>
