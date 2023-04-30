@@ -135,3 +135,18 @@ se utiliza para esperar a que un hilo específico termine su ejecución.
 
 Cuando se llama a esta función, el hilo principal (o cualquier otro hilo que llame a la función) se bloqueará hasta que el hilo especificado haya terminado su ejecución.
 </details>
+
+### [pthread_mutex_init](funciones/permitidas/pthread_mutex_init.c)
+
+```c
+int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr);
+```
+<details>
+  <summary>Descripción</summary>
+
+Inicializar un objeto mutex, que es un mecanismo de sincronización utilizado para evitar que varios hilos accedan simultáneamente a una sección crítica del código.
+
+- `mutex` es un puntero al objeto mutex que se desea inicializar.
+- `attr` es un puntero a un objeto pthread_mutexattr_t
+
+</details>
