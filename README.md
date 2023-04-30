@@ -31,3 +31,41 @@ El programa admite 5 argumentos.
 - `time_to_sleep` (en milisegundos): es el tiempo que tiene un filósofo para dormir.
 
 - `number_of_times_each_philosopher_must_eat` (argumento opcional): si todos los filósofos comen al menos number_of_times_each_philosopher_must_eat veces, la simulación se detendrá. Si no se especifica, la simulación se detendrá con la muerte de un filósofo.
+
+## Funciones permitidas
+
+### [memset](funciones/memset.c)
+
+```c
+ void *memset(void *ptr, int value, size_t num);
+```
+<details>
+  <summary>Descripción</summary>
+
+La función memset es comúnmente utilizada para inicializar matrices y otros tipos de bloques de memoria.
+
+Por ejemplo,el siguiente código utiliza memset para inicializar una matriz de enteros con el valor 0:
+
+</details>
+
+<details>
+  <summary>Código</summary>
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int	main(void)
+{
+	int	myArray[10];
+	int	i;
+
+	memset(myArray, 0, sizeof(myArray));
+	i = -1;
+	while (++i < 10)
+		printf("%d: %d\n", i, myArray[i]);
+	return (0);
+}
+```
+
+</details>
