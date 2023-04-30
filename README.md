@@ -122,3 +122,16 @@ En otras palabras, con esta función se puede liberar la memoria y otros recurso
 - `thread` es el identificador del hilo que se desea desvincular.
 
 </details>
+
+### [pthread_join](funciones/permitidas/pthread_join.c)
+
+```c
+int pthread_join(pthread_t thread, void** retval);
+```
+<details>
+  <summary>Descripción</summary>
+
+se utiliza para esperar a que un hilo específico termine su ejecución.
+
+Cuando se llama a esta función, el hilo principal (o cualquier otro hilo que llame a la función) se bloqueará hasta que el hilo especificado haya terminado su ejecución.
+</details>
