@@ -133,27 +133,27 @@ La función gettimeofday es comúnmente utilizada para medir el tiempo transcurr
 <details>
   <summary>Código</summary>
 
-	```c
-	int	main(void)
+```c
+int	main(void)
 {
-	long	tiempo_transcurrido;
-	int		i;
+long	tiempo_transcurrido;
+int		i;
 
-	struct timeval inicio, fin;
-	gettimeofday(&inicio, NULL); // Tiempo de inicio
-	// Código que se desea medir
-	i = 0;
-	while (i++ < 100000)
-	{
-		;
-	}
-	gettimeofday(&fin, NULL); // Tiempo de fin
-	tiempo_transcurrido = (fin.tv_sec - inicio.tv_sec) * 1000000L + (fin.tv_usec
-			- inicio.tv_usec);
-	printf("Tiempo transcurrido: %ld microsegundos.\n", tiempo_transcurrido);
-	printf("Tiempo transcurrido: %ld segundos.\n", tiempo_transcurrido
-			/ 1000000);
-	return (0);
+struct timeval inicio, fin;
+gettimeofday(&inicio, NULL); // Tiempo de inicio
+// Código que se desea medir
+i = 0;
+while (i++ < 100000)
+{
+	;
+}
+gettimeofday(&fin, NULL); // Tiempo de fin
+tiempo_transcurrido = (fin.tv_sec - inicio.tv_sec) * 1000000L + (fin.tv_usec
+		- inicio.tv_usec);
+printf("Tiempo transcurrido: %ld microsegundos.\n", tiempo_transcurrido);
+printf("Tiempo transcurrido: %ld segundos.\n", tiempo_transcurrido
+		/ 1000000);
+return (0);
 }
 ```
 </details>
