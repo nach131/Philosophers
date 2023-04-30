@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 20:48:46 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/04/29 20:52:17 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/04/30 21:55:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,21 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+pthread_mutex_t	my_mutex;
+
+// int	main(void)
+// {
+// 	// Inicializar el mutex
+// 	pthread_mutex_init(&my_mutex, NULL);
+// 	// Sección crítica protegida por el mutex
+// 	pthread_mutex_lock(&my_mutex);
+// 	// ...código crítico...
+// 	pthread_mutex_unlock(&my_mutex);
+// 	// Liberar los recursos del mutex
+// 	pthread_mutex_destroy(&my_mutex);
+// 	return (0);
+// }
 
 void	*rutina_hilo(void *arg)
 {
