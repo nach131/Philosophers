@@ -136,24 +136,24 @@ La función gettimeofday es comúnmente utilizada para medir el tiempo transcurr
 ```c
 int	main(void)
 {
-long	tiempo_transcurrido;
-int		i;
+	long	tiempo_transcurrido;
+	int		i;
 
-struct timeval inicio, fin;
-gettimeofday(&inicio, NULL); // Tiempo de inicio
-// Código que se desea medir
-i = 0;
-while (i++ < 100000)
-{
-	;
-}
-gettimeofday(&fin, NULL); // Tiempo de fin
-tiempo_transcurrido = (fin.tv_sec - inicio.tv_sec) * 1000000L + (fin.tv_usec
-		- inicio.tv_usec);
-printf("Tiempo transcurrido: %ld microsegundos.\n", tiempo_transcurrido);
-printf("Tiempo transcurrido: %ld segundos.\n", tiempo_transcurrido
-		/ 1000000);
-return (0);
+	struct timeval inicio, fin;
+	gettimeofday(&inicio, NULL); // Tiempo de inicio
+	// Código que se desea medir
+	i = 0;
+	while (i++ < 100000)
+	{
+		;
+	}
+	gettimeofday(&fin, NULL); // Tiempo de fin
+	tiempo_transcurrido = (fin.tv_sec - inicio.tv_sec) * 1000000L + (fin.tv_usec
+			- inicio.tv_usec);
+	printf("Tiempo transcurrido: %ld microsegundos.\n", tiempo_transcurrido);
+	printf("Tiempo transcurrido: %ld segundos.\n", tiempo_transcurrido
+			/ 1000000);
+	return (0);
 }
 ```
 </details>
@@ -166,11 +166,11 @@ int pthread_create(pthread_t* thread, const pthread_attr_t* attr, void* (*start_
 <details>
   <summary>Descripción</summary>
 
-La función pthread_create se utiliza para crear un nuevo hilo en un programa multihilo. La función toma como argumentos un puntero a una variable de tipo `pthread_t`, que se utilizará para almacenar el identificador del nuevo hilo, un puntero a una estructura `pthread_attr_t`, que contiene los atributos del hilo, un puntero a una función que será la rutina del hilo y un puntero a un argumento que se pasará a la rutina del hilo.
+La función `pthread_create` se utiliza para crear un nuevo hilo en un programa multihilo. La función toma como argumentos un puntero a una variable de tipo `pthread_t`, que se utilizará para almacenar el identificador del nuevo hilo, un puntero a una estructura `pthread_attr_t`, que contiene los atributos del hilo, un puntero a una función que será la rutina del hilo y un puntero a un argumento que se pasará a la rutina del hilo.
 
-- `thread`: un puntero a una variable de tipo pthread_t que se utilizará para almacenar el identificador del nuevo hilo creado por la función.
+- `thread`: un puntero a una variable de tipo `pthread_t` que se utilizará para almacenar el identificador del nuevo hilo creado por la función.
 
-- `attr`: un puntero a una estructura de tipo pthread_attr_t que especifica los atributos del nuevo hilo. En la mayoría de los casos, se puede utilizar NULL para utilizar los valores por defecto.
+- `attr`: un puntero a una estructura de tipo `pthread_attr_t` que especifica los atributos del nuevo hilo. En la mayoría de los casos, se puede utilizar NULL para utilizar los valores por defecto.
 
 - `start_routine`: un puntero a la función que será la rutina del hilo. Esta función debe ser de tipo void* y aceptar un argumento de tipo void*. La función devolverá un puntero void* cuando finalice.
 
@@ -181,9 +181,9 @@ La función pthread_create se utiliza para crear un nuevo hilo en un programa mu
 <details>
   <summary>Código</summary>
 
-	```c
+```c
 
-	void	*funcion_hilo(void *arg)
+void	*funcion_hilo(void *arg)
 {
 	printf("\tHola desde el hilo\n");
 	pthread_exit(NULL);
@@ -198,5 +198,5 @@ int	main(void)
 	pthread_exit(NULL);
 }
 
-	```
+```
 </details>
