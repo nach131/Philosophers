@@ -180,3 +180,18 @@ Bloquear un objeto mutex. Si el mutex ya está bloqueado por otro hilo, la funci
 - `mutex` es un puntero al objeto mutex que se desea bloquear.
 
 </details>
+
+### [pthread_mutex_unlock](funciones/permitidas/pthread_mutex_unlock.c)
+
+```c
+int pthread_mutex_unlock(pthread_mutex_t *mutex);
+```
+
+<details>
+  <summary>Descripción</summary>
+
+Desbloquear un objeto mutex que ha sido bloqueado previamente con la función `pthread_mutex_lock`. Si el mutex no está bloqueado, la función `pthread_mutex_unlock` no tiene ningún efecto.
+
+- `mutex` es un puntero al objeto mutex que se desea desbloquear.
+
+</details>
