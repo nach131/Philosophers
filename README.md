@@ -165,3 +165,18 @@ int	pthread_mutex_destroy(pthread_mutex_t *mutex);
 - `mutex` es un puntero al objeto mutex que se desea destruir.
 
 </details>
+
+### [pthread_mutex_lock](funciones/permitidas/pthread_mutex_lock.c)
+
+```c
+int pthread_mutex_lock(pthread_mutex_t *mutex);
+```
+
+<details>
+  <summary>Descripción</summary>
+
+Bloquear un objeto mutex. Si el mutex ya está bloqueado por otro hilo, la función `pthread_mutex_lock` esperará hasta que el mutex se desbloquee antes de continuar.
+
+- `mutex` es un puntero al objeto mutex que se desea bloquear.
+
+</details>
