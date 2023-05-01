@@ -150,3 +150,18 @@ Inicializar un objeto mutex, que es un mecanismo de sincronización utilizado pa
 - `attr` es un puntero a un objeto pthread_mutexattr_t
 
 </details>
+
+### [pthread_mutex_destroy](funciones/permitidas/pthread_mutex_destroy.c)
+
+```c
+int	pthread_mutex_destroy(pthread_mutex_t *mutex);
+```
+
+<details>
+  <summary>Descripción</summary>
+
+ se utiliza para destruir un objeto mutex que fue creado previamente con la función `pthread_mutex_init`.
+
+- `mutex` es un puntero al objeto mutex que se desea destruir.
+
+</details>
