@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 19:33:53 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/04/29 19:48:56 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/05/01 17:37:02 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,31 @@
 
 #include <pthread.h>
 #include <stdio.h>
+#include <unistd.h>
 
 void	*funcion_hilo(void *arg)
 {
-	printf("\tHola desde el hilo\n");
+	int	i;
+
+	i = 0;
+	while (i++ < 1000)
+	{
+		sleep(2);
+		printf("\t%d Tu turno\n", i);
+	}
 	pthread_exit(NULL);
+}
+
+void	myTurno(void)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < 1000)
+	{
+		sleep(2);
+		printf("%d Mi turno\n", i);
+	}
 }
 
 int	main(void)
@@ -55,6 +75,6 @@ int	main(void)
 	pthread_t	id_hilo;
 
 	pthread_create(&id_hilo, NULL, funcion_hilo, NULL);
-	printf("Hola desde el hilo principal\n");
+	myTurno();
 	pthread_exit(NULL);
 }

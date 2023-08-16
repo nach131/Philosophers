@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_libft.c                                         :+:      :+:    :+:   */
+/*   arg_threads.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 15:06:27 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/04/28 23:27:35 by nmota-bu         ###   ########.fr       */
+/*   Created: 2023/05/01 19:39:23 by nmota-bu          #+#    #+#             */
+/*   Updated: 2023/05/01 20:49:54 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,75 +14,54 @@
 /* ║                 https://github.com/nach131/42Barcelona                 ║ */
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
-#include "error.h"
-#include "philosophers.h"
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-int	ft_strlen(const char *s)
-{
-	size_t	i;
+#define RED "\033[0;31m"
+#define GREEN "\033[0;32m"
+#define CYAN "\033[0;36m"
 
-	i = -1;
-	while (s[++i])
-		;
-	return (i);
+void	*tuTurno(void)
+{
+	int	i;
+
+	while (i++ < 10)
+	{
+		sleep(1);
+		printf(RED "\t%d Tu turno\n", i);
+	}
+	pthread_exit(NULL);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*miTurno(void *arg)
 {
-	char	*de;
-	char	*sr;
-	size_t	i;
+	int	i;
+	int	*iptr;
 
-	de = (char *)dest;
-	sr = (char *)src;
+	iptr = (int *)malloc(sizeof(int));
+	*iptr = 5;
 	i = 0;
-	if (sr || de)
+	while (i++ < 5)
 	{
-		while (i < n)
-		{
-			de[i] = sr[i];
-			i++;
-		}
-		return (de);
+		sleep(1);
+		printf(GREEN "%d %d Mi turno\n", i, *iptr);
+		(*iptr)++;
 	}
-	return (NULL);
+	return (iptr);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	main(void)
 {
-	char	*res;
-	size_t	len_s1;
-	size_t	len_s2;
+	pthread_t	id_hilo;
+	int			*res;
 
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	res = (char *)malloc((len_s1 + len_s2 + 1) * sizeof(*res));
-	if (!res)
-		return (0);
-	ft_memcpy(res, s1, len_s1);
-	ft_memcpy(res + len_s1, s2, len_s2);
-	res[len_s1 + len_s2] = '\0';
-	return (res);
+	pthread_create(&id_hilo, NULL, miTurno, NULL);
+	tuTurno();
+	pthread_join(id_hilo, (void *)&res);
+	printf(CYAN "\t\tFIN %d\n", *res);
+	pthread_exit(NULL);
 }
 
-void	ft_message(int err, char *msg)
-{
-	char	*str;
-
-	if (err == DANGER)
-	{
-		str = ft_strjoin(RED, msg);
-		write(STDERR_FILENO, str, ft_strlen(str));
-		free(str);
-	}
-	else if (err == WARNING)
-		printf(YELLOW "%s", msg);
-	else if (err == INFO)
-		printf(CYAN "%s", msg);
-	else if (err == SUCCESS)
-		printf(GREEN "%s", msg);
-	printf(WHITE "\n");
-}
+// https://www.youtube.com/watch?v=It0OFCbbTJE&list=PL9IEJIKnBJjFZxuqyJ9JqVYmuFZHr7CFM
