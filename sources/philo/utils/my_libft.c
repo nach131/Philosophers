@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:06:27 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/16 17:20:05 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/16 23:33:58 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,30 @@ void	ft_message(int err, char *msg)
 	else if (err == SUCCESS)
 		printf(GREEN "%s", msg);
 	printf(WHITE "\n");
+}
+
+int	ft_atoi(const char *str)
+{
+	int	i;
+	int	minus;
+	int	number;
+
+	i = 0;
+	minus = 1;
+	number = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '-')
+	{
+		minus = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		number = number * 10 + (str[i] - 48);
+		i++;
+	}
+	return (minus * number);
 }
