@@ -72,6 +72,7 @@ void	ft_message(int err, char *msg)
 {
 	char	*str;
 
+	// pthread_mutex_lock(printf_mutex);
 	if (err == DANGER)
 	{
 		str = ft_strjoin(RED, msg);
@@ -85,6 +86,7 @@ void	ft_message(int err, char *msg)
 	else if (err == SUCCESS)
 		printf(GREEN "%s", msg);
 	printf(WHITE "\n");
+	// pthread_mutex_unlock(printf_mutex);
 }
 
 int	ft_atoi(const char *str)
