@@ -6,35 +6,26 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:07:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/31 11:48:19 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/31 18:02:05 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mylibft.h"
 #include "error.h"
+#include "mylibft.h"
+#include "philosophers.h"
 #include <stdio.h>
 
-int init_data(int argc, char *argv[])
+int	init_data(int argc, char *argv[], t_data *data)
 {
-	int philo;
-	int t_die;
-	int t_eat;
-	int t_sleep;
-	int meals;
-
-	(void)argc;
-
-	philo = ft_atoi(argv[1]);
-	t_die = ft_atoi(argv[2]) * 1000;
-	t_eat = ft_atoi(argv[3]) * 1000;
-	t_sleep = ft_atoi(argv[4]) * 1000;
+	data->num_philo = ft_atoi(argv[1]);
+	data->philo = ft_calloc(data->num_philo, sizeof(t_philo));
+	data->t_die = ft_atoi(argv[2]) * 1000;
+	data->t_eat = ft_atoi(argv[3]) * 1000;
+	data->t_sleep = ft_atoi(argv[4]) * 1000;
 	if (argc == 6)
-		meals = ft_atoi(argv[5]);
-	if (philo < 0 || t_die < 0 || t_eat < 0 || t_sleep < 0 || meals < 0)
+		data->num_meals = ft_atoi(argv[5]);
+	if (data->num_philo < 0 || data->t_die < 0 || data->t_eat < 0
+		|| data->t_sleep < 0 || data->num_meals < 0)
 		return (1);
-	printf("philo,%d\n", philo);
-	printf("die,%d\n", t_die);
-	printf("eat,%d\n", t_eat);
-	printf("sleep,%d\n", t_sleep);
 	return (0);
 }

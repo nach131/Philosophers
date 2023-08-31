@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mylibft.h                                          :+:      :+:    :+:   */
+/*   my_libft2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 11:05:16 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/31 17:47:25 by nmota-bu         ###   ########.fr       */
+/*   Created: 2023/08/31 17:44:17 by nmota-bu          #+#    #+#             */
+/*   Updated: 2023/08/31 17:45:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MYLIBFT_H
-# define MYLIBFT_H
+#include <stdlib.h>
 
-# include <stdio.h>
+void static ft_bzero(void *s, size_t n)
+{
+	char *ch;
+	size_t i;
 
-void	ft_message(int err, char *msg);
-char	*ft_strjoin(char const *s1, char const *s2);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-int		ft_strlen(const char *s);
-int		ft_atoi(const char *str);
-void	*ft_calloc(size_t count, size_t size);
+	ch = s;
+	i = 0;
+	while (i < n)
+	{
+		ch[i] = '\0';
+		i++;
+	}
+}
 
-#endif
+void *ft_calloc(size_t count, size_t size)
+{
+	void *puntero;
+
+	puntero = malloc(count * size);
+	if (!puntero)
+		return (NULL);
+	ft_bzero(puntero, count * size);
+	return (puntero);
+}
