@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/30 13:45:04 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/31 11:46:39 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,42 @@
 /* ║                 https://github.com/nach131/42Barcelona                 ║ */
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
+#include "colors.h"
 #include "error.h"
 #include "philosophers.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "mylibft.h"
 
 void	err_argc(void)
 {
-	ft_message(WARNING, "Missing arguments:");
-	ft_message(DANGER,
-				"./philo [number_philosophers] [time_to_die] [time_to_eat] "
-				"[time_to_sleep] [number_of_times_each_philosopher_must_eat]");
-	printf("\n");
-	ft_message(INFO,
-				"number_of_philosophers: The number of philosophers and also the number of forks\n"
-				" time_to_die (in milliseconds): If a philosopher didn’t start eating time_to_die milliseconds since the beginning of their last meal or the beginning of the sim- ulation,
-					they die");
+	ft_message(DANGER, "Missing arguments:");
+	printf("\x1B[41m\x1B[1m\x1B%s\x1B[0m \x1B[41m\x1B[1m\x1B%s\x1B[0m "
+		   "\x1B[41m\x1B[1m\x1B%s\x1B[0m \x1B[41m\x1B[1m\x1B%s\x1B[0m "
+		   "\x1B[41m\x1B[1m\x1B%s\x1B[0m\n",
+		   g_mss[0], g_mss[1], g_mss[2], g_mss[3], g_mss[4]);
+	ft_message(INFO, (char *)g_args[0]);
+	ft_message(INFO, (char *)g_args[1]);
+	ft_message(INFO, (char *)g_args[2]);
+	ft_message(INFO, (char *)g_args[3]);
+	ft_message(INFO, (char *)g_args[4]);
+	printf(ICYAN "\t    *(minimum two Philosophers).\n" RESET);
+	printf(ICYAN "\t   **(Time in milliseconds).\n" RESET);
 }
 
 int	main(int argc, char *argv[])
 {
-	(void)argv;
 	if (argc < 5 || argc > 6)
 	{
 		err_argc();
 		return (EXIT_FAILURE);
 	}
-	utils();
+	if (init_data(argc, argv))
+	{
+		ft_message(DANGER, "All arguments have to be positive.");
+		return (EXIT_FAILURE);
+	}
+
+	// utils();
 	return (0);
 }

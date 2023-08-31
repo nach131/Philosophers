@@ -6,27 +6,27 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 00:37:54 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/03/23 16:29:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/30 19:44:05 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLORS_H
 # define COLORS_H
 
-// # Regular Colors
+# define RESET "\x1B[0m"
 
+// # Regular Colors
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
 # define YELLOW "\033[0;33m"
 # define BLUE "\033[0;34m"
 # define MAGENTA "\033[0;35m"
 # define CYAN "\033[0;36m"
-# define WHITE "\033[0;37m"
 # define ORANGE "\033[1;31m"
+# define WHITE "\033[0;37m"
 # define BLACK "\x1B[30m"
 
 // # Bold
-
 # define BBLACK "\033[1;30m"
 # define BYELLOW "\033[1;33m"
 # define BBLUE "\033[1;34m"
@@ -35,8 +35,17 @@
 # define BWHITE "\033[1;37m"
 # define BORANGE "\033[1;31m"
 
-// # Underline
+// # Italic
+# define IRED "\x1B[3m\x1B[31m"
+# define IGREEN "\x1B[3m\x1B[32m"
+# define IYELLOW "\x1B[3m\x1B[33m"
+# define IBLUE "\x1B[3m\x1B[34m"
+# define IMAGENTA "\x1B[3m\x1B[35m"
+# define ICYAN "\x1B[3m\x1B[36m"
+# define IORANGE "\x1B[3m\x1B[38;2;255;165;0m"
+# define IWHITE "\x1B[3m\x1B[37m"
 
+// # Underline
 # define UORANGE "\033[4;31m"
 # define UYELLOW "\033[4;33m"
 # define UBLUE "\033[4;34m"
@@ -72,3 +81,7 @@
 // FBLOCK	████████████████████████
 // EBLOCK	▍▍▍▍▍▍▍▍▍▍▍▍▍▍▍▍▍▍▍▍▍▍▍▍
 // FLECHAD	⤑⤑⤑⤑⤑⤑⤑⤑⤑⤑⤑⤑⤑⤑⤑
+
+// \x1B es la secuencia de escape ANSI.
+// [3m activa el formato de texto en cursiva.
+// [38;2;255;165;0m establece el color utilizando el modelo de color RGB para obtener naranja.

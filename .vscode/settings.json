@@ -5,7 +5,9 @@
 		"*.hbs": "handlebars",
 		"*.c": "c",
 		"sstream": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"limits.h": "c",
+		"error.h": "c"
 	},
 	"editor.fontLigatures": false,
 	"lldb.dbgconfig": {}
