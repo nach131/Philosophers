@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:07:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/31 18:02:05 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/01 15:52:45 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,32 @@
 #include "philosophers.h"
 #include <stdio.h>
 
+void	put_num(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->num_philo)
+	{
+		data->philo[i].num = i + 1;
+		i++;
+	}
+}
+
+// void static	init_threads(t_data *data)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	data->forks = malloc(sizeof(pthread_mutex_t) * data->num_philo);
+// 	data->threads = malloc(sizeof(pthread_t) * data->num_philo);
+// }
+
 int	init_data(int argc, char *argv[], t_data *data)
 {
 	data->num_philo = ft_atoi(argv[1]);
 	data->philo = ft_calloc(data->num_philo, sizeof(t_philo));
+	put_num(data);
 	data->t_die = ft_atoi(argv[2]) * 1000;
 	data->t_eat = ft_atoi(argv[3]) * 1000;
 	data->t_sleep = ft_atoi(argv[4]) * 1000;

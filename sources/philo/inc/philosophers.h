@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/31 18:22:15 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/01 15:53:37 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ const static char	*g_mss[] = {
 
 typedef struct s_philosopher
 {
-	size_t			last_meal;
-	size_t			eats;
+	int				num;
+	int				last_meal;
+	int				eats;
 }					t_philo;
 
 typedef struct s_data

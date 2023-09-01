@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/31 18:23:02 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/01 17:07:08 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,25 @@ void	free_data(t_data *data)
 		free(data->philo);
 }
 
+void	print_all(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	printf(RED "philo: %d\n", data->num_philo);
+	printf("die: %d\n", data->t_die);
+	printf("eat: %d\n", data->t_eat);
+	printf("sleep: %d\n", data->t_sleep);
+	if (data->num_meals)
+		printf("meals: %d\n" RESET, data->num_meals);
+	while (i < data->num_philo) // Cambiar data->philo[i] por data->num_philo
+	{
+		printf("philo num: %d\n", data->philo[i].num);
+		// Acceder a num dentro de la estructura t_philo
+		i++;
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	t_data	*data;
@@ -68,13 +87,10 @@ int	main(int argc, char *argv[])
 		free(data);
 		return (EXIT_FAILURE);
 	}
-	printf(RED "philo: %d\n", data->num_philo);
-	printf("die: %d\n", data->t_die);
-	printf("eat: %d\n", data->t_eat);
-	printf("sleep: %d\n", data->t_sleep);
-	if (data->num_meals)
-		printf("meals: %d\n" RESET, data->num_meals);
-	// utils();
+	//=========================================================================
+	print_all(data);
+	//=========================================================================
+	utils();
 	free_data(data);
 	free(data);
 	return (0);
