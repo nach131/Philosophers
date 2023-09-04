@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/01 15:53:37 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/04 14:02:51 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 # include <pthread.h>
 
 const static char	*g_args[] = {
-	"\t1: Number* of philosophers.",
-	"\t2: Time** for each philosohper to die without eating.",
-	"\t3: Time** they have to eat.",
-	"\t4: Time** they have to sleep.",
-	"\t5: Number of meals have take every philo (optional).",
+	"\t1. Number* of philosophers.",
+	"\t2. Time** for each philosohper to die without eating.",
+	"\t3. Time** they have to eat.",
+	"\t4. Time** they have to sleep.",
+	"\t5. Number of meals have take every philo (optional).",
 };
 
 const static char	*g_mss[] = {
@@ -40,10 +40,10 @@ typedef struct s_philosopher
 
 typedef struct s_data
 {
-	pthread_mutex_t	*forks;
-	pthread_t		*threads;
+	pthread_t		*id;
+	pthread_mutex_t	*mutex;
 	t_philo			*philo;
-	int				num_philo;
+	int				num_philos;
 	int				num_meals;
 	int				t_die;
 	int				t_eat;
