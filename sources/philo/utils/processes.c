@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/05 14:12:27 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/05 14:42:20 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,14 @@ void	print_ptr(t_philo *ph)
 void	*processes(void *arg)
 {
 	t_philo		*ph;
-	int			i;
 	uint64_t	start;
 
 	ph = (t_philo *)arg;
 	(void)ph;
-	i = 0;
 	start = times_ms();
 	while (42)
 	{
-		printf("%4llums,\t%d\n", time_elapsed(start), i);
-		i++;
+		printf("%4llums,\n", time_elapsed(start));
 		// print_ptr(ph);
 	}
 	return (NULL);
