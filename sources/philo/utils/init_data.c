@@ -6,41 +6,40 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:07:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/04 14:14:38 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/05 11:34:26 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "error.h"
 #include "mylibft.h"
 #include "philosophers.h"
-#include <stdio.h>
+#include <stdlib.h>
 
-void	put_num(t_data *data)
+void create_philo(t_data *dt, int num)
 {
-	int	i;
-
-	i = 0;
-	while (i < data->num_philos)
-	{
-		data->philo[i].num = i + 1;
-		i++;
-	}
+	dt->philo[num].num = num + 1;
+	dt->philo[num].data = dt;
 }
 
-// void static	init_threads(t_data *data)
-// {
-// 	int	i;
+void static init_threads_mutex(t_data *dt)
+{
+	int i;
 
-// 	i = 0;
-// 	data->forks = malloc(sizeof(pthread_mutex_t) * data->num_philo);
-// 	data->threads = malloc(sizeof(pthread_t) * data->num_philo);
-// }
+	i = -1;
+	dt->id = malloc(sizeof(pthread_t) * dt->num_philos);
+	dt->mutex = malloc(sizeof(pthread_mutex_t) * dt->num_philos);
+	while (++i < dt->num_philos)
+	{
+		pthread_mutex_init(&dt->mutex[i], NULL);
+		pthread_create(&dt->id[i], NULL, &processes, &dt->philo[i]);
+		create_philo(dt, i);
+	}
+}
 
 int	init_data(int argc, char *argv[], t_data *data)
 {
 	data->num_philos = ft_atoi(argv[1]);
 	data->philo = ft_calloc(data->num_philos, sizeof(t_philo));
-	put_num(data);
 	data->t_die = ft_atoi(argv[2]) * 1000;
 	data->t_eat = ft_atoi(argv[3]) * 1000;
 	data->t_sleep = ft_atoi(argv[4]) * 1000;
@@ -57,5 +56,6 @@ int	init_data(int argc, char *argv[], t_data *data)
 		ft_message(DANGER, "Minimum two philosophers.");
 		return (1);
 	}
+	init_threads_mutex(data);
 	return (0);
 }

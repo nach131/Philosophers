@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/04 14:14:42 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/05 12:51:56 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include "philosophers.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 void	err_argc(void)
 {
@@ -56,6 +57,7 @@ void	print_all(t_data *data)
 	int	i;
 
 	i = 0;
+	printf("-----------\n");
 	printf(RED "philos: %d\n", data->num_philos);
 	printf("die: %d\n", data->t_die);
 	printf("eat: %d\n", data->t_eat);
@@ -73,17 +75,6 @@ void	print_all(t_data *data)
 	}
 }
 
-// void create_pthreads(t_data *data)
-// {
-// 	int i;
-// 	i = 0l;
-// 	while (i < data->num_philo)
-// 	{
-// 		pthread_create(data->forks)
-// 			i++;
-// 	}
-// }
-
 int	main(int argc, char *argv[])
 {
 	t_data	*data;
@@ -100,14 +91,13 @@ int	main(int argc, char *argv[])
 		free(data);
 		return (EXIT_FAILURE);
 	}
-	else
-	{
-		;
-	}
+	usleep(100000000);
+
 	//=========================================================================
-	print_all(data);
+	// print_all(data);
 	//=========================================================================
-	utils();
+	// start_program(data);
+	// utils();
 	free_data(data);
 	free(data);
 	return (0);

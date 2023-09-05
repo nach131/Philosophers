@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/04 14:02:51 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/05 11:32:53 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ const static char	*g_mss[] = {
 
 typedef struct s_philosopher
 {
-	int				num;
+	struct s_data *data;
+	int num; //
 	int				last_meal;
 	int				eats;
 }					t_philo;
@@ -42,12 +43,12 @@ typedef struct s_data
 {
 	pthread_t		*id;
 	pthread_mutex_t	*mutex;
-	t_philo			*philo;
-	int				num_philos;
-	int				num_meals;
-	int				t_die;
-	int				t_eat;
-	int				t_sleep;
+	t_philo *philo; //
+	int num_philos; //
+	int num_meals;	//
+	int t_die;		//
+	int t_eat;		//
+	int t_sleep;	//
 }					t_data;
 
 void				utils(void);
@@ -55,5 +56,6 @@ void				utils(void);
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ UTILS ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
 int					init_data(int argc, char *argv[], t_data *data);
+void *processes(void *arg);
 
 #endif
