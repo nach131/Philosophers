@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/07 13:03:13 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:17:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_philosopher
 {
 	struct s_data	*data;
 	int num; //
-	int				last_meal;
+	uint64_t		last_meal;
 	int				eats;
 }					t_philo;
 

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/07 12:25:14 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:18:41 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	print_all(t_data *data)
 	while (i < data->num_philos) // Cambiar data->philo[i] por data->num_philo
 	{
 		printf(RED "philo num: %d\n", data->philo[i].num);
-		printf(ORANGE "\tlast_meal: %d, num eats: %d\n" RESET,
+		printf(ORANGE "\tlast_meal: %llu, num eats: %d\n" RESET,
 				data->philo->last_meal,
 				data->philo->eats);
 		// Acceder a num dentro de la estructura t_philo
