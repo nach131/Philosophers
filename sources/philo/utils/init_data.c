@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:07:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/06 15:59:25 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/07 11:38:03 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void static	init_threads_mutex(t_data *dt)
 	i = -1;
 	dt->id = malloc(sizeof(pthread_t) * dt->num_philos);
 	dt->mutex = malloc(sizeof(pthread_mutex_t) * dt->num_philos);
+	pthread_mutex_init(&dt->m_print, NULL);
+	while (++i < dt->num_philos)
+		pthread_mutex_init(&dt->mutex[i], NULL);
+	i = -1;
 	while (++i < dt->num_philos)
 	{
-		// TODO
-		// INICIAR LOS MUTEX ANTES DE LOS HILOS
-		// UNO PARA MUTEX PRINT
-		pthread_mutex_init(&dt->mutex[i], NULL);
 		pthread_create(&dt->id[i], NULL, &processes, &dt->philo[i]);
 		create_philo(dt, i);
 	}

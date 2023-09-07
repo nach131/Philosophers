@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/06 15:41:59 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:09:03 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,24 @@ void	choose_spoon(int *right, int *left, t_philo *philo)
 			*right = philo->data->num_philos;
 		else
 			*right = (philo->num - 1);
-		// printf(ORANGE "Philo #%d, r:%d, l:%d\n" RESET, philo->num, *right,
-		// 		*left);
 	}
 	else
 	{
 		*left = philo->num;
 		*right = (philo->num - 1);
-		// printf(CYAN "Philo #%d, r:%d, l:%d\n" RESET, philo->num, *right,
-		// *left);
 	}
+}
+
+void	print_does(t_philo *philo, int start, int type)
+{
+	char	*mss;
+
+	mss = (char *)g_party[type];
+	pthread_mutex_lock(&philo->data->m_print);
+	printf(CYAN "%llums " RESET, time_elapsed(start));
+	printf(MAGENTA "#%02d " RESET, philo->num);
+	printf("%s", mss);
+	pthread_mutex_unlock(&philo->data->m_print);
 }
 
 void	take_spoon(t_philo *philo, uint64_t start)
@@ -52,9 +60,15 @@ void	take_spoon(t_philo *philo, uint64_t start)
 
 	choose_spoon(&s_right, &s_left, philo);
 	pthread_mutex_lock(&philo->data->mutex[philo->num]);
-	printf(CYAN "%04llums #%02d " RESET, time_elapsed(start), philo->num);
-	printf(GREEN "\xF0\x9F\xA5\x84 Has taken spoon\n" RESET);
+	print_does(philo, start, TAKE);
 	pthread_mutex_unlock(&philo->data->mutex[philo->num]);
+}
+
+void	eating(t_philo *philo, uint64_t start)
+{
+	philo->eats++;
+	philo->last_meal = time_elapsed(start);
+	usleep(philo->data->t_sleep);
 }
 
 void	*processes(void *arg)
@@ -68,6 +82,13 @@ void	*processes(void *arg)
 	{
 		// printf("%4llums,\n", time_elapsed(start));
 		take_spoon(philo, start);
+		print_does(philo, start, EAT);
+		// pthread_mutex_unlock(&philo->data->m_print);
+		// printf(CYAN "%04llums #%02d " RESET, time_elapsed(start),
+		// philo->num);
+		// printf(ORANGE "\xF0\x9F\x8D\x95 Is eating\n" RESET);
+		pthread_mutex_unlock(&philo->data->m_print);
+		eating(philo, start);
 	}
 	return (NULL);
 }
