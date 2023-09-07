@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:07:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/05 11:34:26 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:59:25 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,24 @@
 #include "philosophers.h"
 #include <stdlib.h>
 
-void create_philo(t_data *dt, int num)
+void	create_philo(t_data *dt, int num)
 {
 	dt->philo[num].num = num + 1;
 	dt->philo[num].data = dt;
 }
 
-void static init_threads_mutex(t_data *dt)
+void static	init_threads_mutex(t_data *dt)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	dt->id = malloc(sizeof(pthread_t) * dt->num_philos);
 	dt->mutex = malloc(sizeof(pthread_mutex_t) * dt->num_philos);
 	while (++i < dt->num_philos)
 	{
+		// TODO
+		// INICIAR LOS MUTEX ANTES DE LOS HILOS
+		// UNO PARA MUTEX PRINT
 		pthread_mutex_init(&dt->mutex[i], NULL);
 		pthread_create(&dt->id[i], NULL, &processes, &dt->philo[i]);
 		create_philo(dt, i);

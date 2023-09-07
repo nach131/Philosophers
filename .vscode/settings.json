@@ -7,7 +7,8 @@
 		"sstream": "c",
 		"libft.h": "c",
 		"limits.h": "c",
-		"error.h": "c"
+		"error.h": "c",
+		"stdbool.h": "c"
 	},
 	"editor.fontLigatures": false,
 	"lldb.dbgconfig": {}
