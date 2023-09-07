@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/07 13:17:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:06:23 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ enum
 {
 	TAKE,
 	EAT,
+	SLEEP,
 	THINK,
 	DIE,
 };
@@ -41,7 +42,8 @@ enum
 const static char	*g_party[] = {
 	"\xF0\x9F\xA5\x84 \033[0;32mHas taken spoon\x1B[0m\n",
 	"\xF0\x9F\x8D\x95 \033[1;31mIs eating\x1B[0m\n",
-	"\xF0\x9F\x92\xA1 \033[0;33mIs Thinking\x1B[0m\n",
+	"\xF0\x9F\x92\xA1 \033[0;33mIs sleeping\x1B[0m\n",
+	"\xF0\x9F\x92\xA1 \033[0;33mIs thinking\x1B[0m\n",
 	"\xE2\x98\xA0\xEF\xB8\x8F  \033[0;31mIs died\x1B[0m\n"};
 
 typedef struct s_philosopher
@@ -72,6 +74,6 @@ void				utils(void);
 int					init_data(int argc, char *argv[], t_data *data);
 void				*processes(void *arg);
 uint64_t			times_ms(void);
-uint64_t			time_elapsed(uint64_t start);
+uint64_t			time_elapsed(void);
 
 #endif

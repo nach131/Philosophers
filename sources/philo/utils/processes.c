@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/07 13:22:14 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:05:43 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	print_does(t_philo *philo, int type)
 
 	mss = (char *)g_party[type];
 	pthread_mutex_lock(&philo->data->m_print);
-	printf(CYAN "%llums " RESET, (unsigned long long)time_elapsed());
+	printf(CYAN "%04llums " RESET, time_elapsed());
 	printf(MAGENTA "#%02d " RESET, philo->num);
 	printf("%s", mss);
 	pthread_mutex_unlock(&philo->data->m_print);
@@ -83,12 +83,13 @@ void	*processes(void *arg)
 		// printf("%4llums,\n", time_elapsed(start));
 		take_spoon(philo);
 		print_does(philo, EAT);
-		// pthread_mutex_unlock(&philo->data->m_print);
-		// printf(CYAN "%04llums #%02d " RESET, time_elapsed(start),
-		// philo->num);
-		// printf(ORANGE "\xF0\x9F\x8D\x95 Is eating\n" RESET);
-		pthread_mutex_unlock(&philo->data->m_print);
 		eating(philo);
+		// print_does(philo, SLEEP);
+		// // pthread_mutex_unlock(&philo->data->m_print);
+		// // printf(CYAN "%04llums #%02d " RESET, time_elapsed(start),
+		// // philo->num);
+		// // printf(ORANGE "\xF0\x9F\x8D\x95 Is eating\n" RESET);
+		// pthread_mutex_unlock(&philo->data->m_print);
 	}
 	return (NULL);
 }
