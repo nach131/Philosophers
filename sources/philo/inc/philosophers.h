@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/11 18:25:36 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:26:50 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,14 @@ enum
 	DIE,
 };
 
+// "\xF0\x9F\x8D\x9A \033[1;31mIs eating\x1B[0m",
+
 const static char	*g_party[] = {
-	"\xF0\x9F\xA5\x84 \033[0;32mHas taken spoon\x1B[0m\n",
-	"\xF0\x9F\x8D\x95 \033[1;31mIs eating\x1B[0m\n",
-	"\xF0\x9F\x92\xa4 \x1B[38;2;47;82;191mIs sleeping\x1B[0m\n",
-	"\xF0\x9F\x92\xA1 \033[0;33mIs thinking\x1B[0m\n",
-	"\xE2\x98\xA0\xEF\xB8\x8F  \033[0;31mIs died\x1B[0m\n"};
+	"\xF0\x9F\xA5\x84 \033[0;32mHas taken spoon\x1B[0m",
+	"\xF0\x9F\x8D\x95 \033[1;31mIs eating\x1B[0m",
+	"\xF0\x9F\x92\xa4 \x1B[38;2;47;82;191mIs sleeping\x1B[0m",
+	"\xF0\x9F\x92\xA1 \033[0;33mIs thinking\x1B[0m",
+	"\xE2\x98\xA0\xEF\xB8\x8F  \033[0;31mIs died\x1B[0m"};
 
 typedef struct s_philosopher
 {
@@ -75,5 +77,7 @@ int					init_data(int argc, char *argv[], t_data *data);
 void				*processes(void *arg);
 uint64_t			times_ms(void);
 uint64_t			time_elapsed(void);
+// void				print_does(t_philo *philo, int type);
+void				waiting(t_data *data);
 
 #endif

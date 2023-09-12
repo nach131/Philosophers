@@ -10,7 +10,7 @@
 			"name": "philo",
 			// "program": "${fileDirname}/${fileBasenameNoExtension}.out",
 			"program": "${workspaceFolder}/sources/philo",
-			// "args": ["30","16","6","19","5","28","26","11","25","20","9","18","3","12","4","1","2","10","7","13","17","29","24","14","23","15","22","21","8","27"],
+			"args": "4 800 200 200 5",
 			"stopOnEntry": false,
 			"cwd": "${fileDirname}"
 		},

@@ -46,7 +46,7 @@ UTILS_DIR	= utils/
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ SOURCES ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄#
 
 MAIN_FILES	=	main
-UTILS_FILES	= file_utils my_libft init_data my_libft2 processes clock
+UTILS_FILES	= file_utils my_libft init_data my_libft2 processes clock waiting
 
 SRC_MAIN_FILES	+=$(MAIN_FILES)
 SRCS_MAIN = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_MAIN_FILES)))

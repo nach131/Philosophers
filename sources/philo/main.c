@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/11 18:11:24 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:18:58 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,28 +52,28 @@ void	free_data(t_data *data)
 		free(data->philo);
 }
 
-void	print_all(t_data *data)
-{
-	int	i;
+// void	print_all(t_data *data)
+// {
+// 	int	i;
 
-	i = 0;
-	printf("-----------\n");
-	printf(RED "philos: %d\n", data->num_philos);
-	printf("die: %d\n", data->t_die);
-	printf("eat: %d\n", data->t_eat);
-	printf("sleep: %d\n", data->t_sleep);
-	if (data->num_meals)
-		printf("meals: %d\n" RESET, data->num_meals);
-	while (i < data->num_philos) // Cambiar data->philo[i] por data->num_philo
-	{
-		printf(RED "philo num: %d\n", data->philo[i].num);
-		printf(ORANGE "\tlast_meal: %llu, num eats: %d\n" RESET,
-				data->philo->last_meal,
-				data->philo->eats);
-		// Acceder a num dentro de la estructura t_philo
-		i++;
-	}
-}
+// 	i = 0;
+// 	printf("-----------\n");
+// 	printf(RED "philos: %d\n", data->num_philos);
+// 	printf("die: %d\n", data->t_die);
+// 	printf("eat: %d\n", data->t_eat);
+// 	printf("sleep: %d\n", data->t_sleep);
+// 	if (data->num_meals)
+// 		printf("meals: %d\n" RESET, data->num_meals);
+// 	while (i < data->num_philos) // Cambiar data->philo[i] por data->num_philo
+// 	{
+// 		printf(RED "philo num: %d\n", data->philo[i].num);
+// 		printf(ORANGE "\tlast_meal: %llu, num eats: %d\n" RESET,
+// 				data->philo->last_meal,
+// 				data->philo->eats);
+// 		// Acceder a num dentro de la estructura t_philo
+// 		i++;
+// 	}
+// }
 
 int	main(int argc, char *argv[])
 {
@@ -91,14 +91,10 @@ int	main(int argc, char *argv[])
 		free(data);
 		return (EXIT_FAILURE);
 	}
+	waiting(data);
+	usleep(10000);
 	// usleep(100000000);
 	pthread_mutex_destroy(&data->m_print);
-	usleep(10000000);
-	//=========================================================================
-	// print_all(data);
-	//=========================================================================
-	// start_program(data);
-	// utils();
 	free_data(data);
 	free(data);
 	return (0);

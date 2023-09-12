@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 00:37:54 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/07 13:00:55 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:20:39 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,14 @@
 # define IWHITE "\x1B[3m\x1B[37m"
 
 // # Underline
-# define UORANGE "\033[4;31m"
+# define URED "\x1B[4m\x1B[38;2;230;50;50m"
+# define UGREEN "\x1B[4m\x1B[38;2;0;255;0m"
 # define UYELLOW "\033[4;33m"
-# define UBLUE "\033[4;34m"
+# define UBLUE "\x1B[4m\x1B[38;2;47;82;191m"
 # define UMAGENTA "\033[4;35m"
 # define UCYAN "\033[4;36m"
+# define UORANGE "\x1B[4m\x1B[38;2;255;165;0m"
 # define UWHITE "\033[4;37m"
-
-// # Background
-# define BGBLACK "\033[40m"
-# define BGRED "\033[41m"
-# define BGGREEN "\033[42m"
-# define BGYELLOW "\033[43m"
-# define BGBLUE "\033[44m"
-# define BGMAGENTA "\033[45m"
-# define BGCYAN "\033[46m"
-# define BGWHITE "\033[47m"
 
 // # UNICODE
 # define DHOR "\u2550"
