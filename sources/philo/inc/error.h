@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:01:35 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/04/28 23:21:47 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/12 10:33:46 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ typedef enum e_bool
 	FALSE,
 	TRUE,
 }		t_bool;
+
+typedef enum e_power
+{
+	OFF,
+	ON,
+}		t_power;
 
 #endif
 

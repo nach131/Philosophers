@@ -6,40 +6,15 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/07 18:05:43 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/12 10:57:33 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colors.h"
+#include "error.h"
 #include "philosophers.h"
 #include <stdbool.h>
 #include <stdio.h>
-
-// void	print_ptr(t_philo *ph)
-// {
-// 	(void)ph;
-// 	// printf("loop\n");
-// 	printf(MAGENTA "Philos: %d\n", ph->num);
-// 	printf(MAGENTA "%d:Philo die\n" RESET, ph->data->t_die);
-// 	printf("Mutex: %p\n", (void *)&ph->data->mutex[ph->num - 1]);
-// }
-
-void	choose_spoon(int *right, int *left, t_philo *philo)
-{
-	if (philo->num % 2)
-	{
-		*left = philo->num;
-		if (philo->num == 1)
-			*right = philo->data->num_philos;
-		else
-			*right = (philo->num - 1);
-	}
-	else
-	{
-		*left = philo->num;
-		*right = (philo->num - 1);
-	}
-}
 
 void	print_does(t_philo *philo, int type)
 {
@@ -55,13 +30,45 @@ void	print_does(t_philo *philo, int type)
 
 void	take_spoon(t_philo *philo)
 {
-	int	s_right;
-	int	s_left;
+	if (philo->num % 2) // impar
+	{
+		pthread_mutex_lock(&philo->data->mutex[philo->num]);
+		if (philo->num == 1)
+			pthread_mutex_lock(&philo->data->mutex[philo->data->num_philos]);
+		else
+			pthread_mutex_lock(&philo->data->mutex[philo->num - 1]);
+	}
+	else
+	{
+		pthread_mutex_lock(&philo->data->mutex[philo->num]);
+		pthread_mutex_lock(&philo->data->mutex[philo->num - 1]);
+	}
+}
 
-	choose_spoon(&s_right, &s_left, philo);
-	pthread_mutex_lock(&philo->data->mutex[philo->num]);
-	print_does(philo, TAKE);
-	pthread_mutex_unlock(&philo->data->mutex[philo->num]);
+// void	take_spoon(t_philo *philo)
+// {
+// 	int	s_right;
+// 	int	s_left;
+
+// 	choose_spoon(&s_right, &s_left, philo);
+// 	print_does(philo, TAKE);
+// }
+
+void	drop_spoon(t_philo *philo)
+{
+	if (philo->num % 2) // impar
+	{
+		pthread_mutex_unlock(&philo->data->mutex[philo->num]);
+		if (philo->num == 1)
+			pthread_mutex_unlock(&philo->data->mutex[philo->data->num_philos]);
+		else
+			pthread_mutex_unlock(&philo->data->mutex[philo->num - 1]);
+	}
+	else
+	{
+		pthread_mutex_unlock(&philo->data->mutex[philo->num]);
+		pthread_mutex_unlock(&philo->data->mutex[philo->num - 1]);
+	}
 }
 
 void	eating(t_philo *philo)
@@ -75,21 +82,17 @@ void	*processes(void *arg)
 {
 	t_philo	*philo;
 
-	// uint64_t	start;
 	philo = (t_philo *)arg;
-	// start = times_ms();
 	while (42)
 	{
-		// printf("%4llums,\n", time_elapsed(start));
 		take_spoon(philo);
+		print_does(philo, TAKE);
 		print_does(philo, EAT);
 		eating(philo);
-		// print_does(philo, SLEEP);
-		// // pthread_mutex_unlock(&philo->data->m_print);
-		// // printf(CYAN "%04llums #%02d " RESET, time_elapsed(start),
-		// // philo->num);
-		// // printf(ORANGE "\xF0\x9F\x8D\x95 Is eating\n" RESET);
-		// pthread_mutex_unlock(&philo->data->m_print);
+		print_does(philo, SLEEP);
+		drop_spoon(philo);
+		usleep(philo->data->t_sleep);
+		print_does(philo, THINK);
 	}
 	return (NULL);
 }
