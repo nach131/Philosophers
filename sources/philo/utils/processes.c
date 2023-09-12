@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/12 17:37:40 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:40:25 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,30 @@ static void	choose_forks(t_philo *philo, int *spoon_r, int *spoon_l)
 	int	num_philos;
 	int	is_odd_philo;
 
+	// 	int	flag;
+	// if (philo->num % 2)
+	// {
+	// 	if (philo->data->num_philos % 2)
+	// 		flag = 0;
+	// 	else
+	// 		flag = 1;
+	// }
+	// else
+	// {
+	// 	if (philo->data->num_philos % 2)
+	// 		flag = 1;
+	// 	else
+	// 		flag = 0;
+	// }
+	// if (flag)
+	// {
+	// 	*spoon_r = (philo->num + 1) % (philo->data->num_philos);
+	// 	*spoon_l = philo->num;
+	// 	return ;
+	// }
+	// *spoon_r = philo->num;
+	// *spoon_l = (philo->num + 1) % (philo->data->num_philos);
+	//=========================================================================
 	num_philos = philo->data->num_philos;
 	is_odd_philo = philo->num % 2;
 	if ((is_odd_philo && num_philos % 2 == 0) || (!is_odd_philo && num_philos
@@ -93,7 +117,7 @@ void	*processes(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	usleep(10);
+	usleep(1);
 	while (1)
 	{
 		take_spoon(philo);
