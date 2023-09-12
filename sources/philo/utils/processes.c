@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/12 17:40:25 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:43:36 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-void	print_does(t_philo *philo, int type, int spoon)
+void	print_does(t_philo *philo, int type)
 {
 	char	*mss;
 
@@ -24,10 +24,7 @@ void	print_does(t_philo *philo, int type, int spoon)
 	pthread_mutex_lock(&philo->data->m_print);
 	printf(CYAN "%04llums " RESET, time_elapsed());
 	printf(MAGENTA "#%02d " RESET, philo->num);
-	if (spoon)
-		printf("%s[%d]\n", mss, spoon);
-	else
-		printf("%s\n", mss);
+	printf("%s\n", mss);
 	pthread_mutex_unlock(&philo->data->m_print);
 }
 
@@ -82,14 +79,12 @@ static void	take_spoon(t_philo *philo)
 
 	choose_forks(philo, &spoon_r, &spoon_l);
 	pthread_mutex_lock(philo->data->mutex + spoon_r);
-	print_does(philo, TAKE, spoon_r);
 	// pthread_mutex_lock(&philo->data->m_print);
 	// printf(CYAN "%04llums " RESET, time_elapsed());
 	// printf(MAGENTA "#%02d " RESET, philo->num);
 	// printf("%s[%d]\n", g_party[TAKE], spoon_r);
 	// pthread_mutex_unlock(&philo->data->m_print);
 	pthread_mutex_lock(philo->data->mutex + spoon_l);
-	print_does(philo, TAKE, spoon_l);
 	// pthread_mutex_lock(&philo->data->m_print);
 	// printf(CYAN "%04llums " RESET, time_elapsed());
 	// printf(MAGENTA "#%02d " RESET, philo->num);
@@ -121,13 +116,13 @@ void	*processes(void *arg)
 	while (1)
 	{
 		take_spoon(philo);
-		// print_does(philo, TAKE, 0);
-		print_does(philo, EAT, 0);
+		print_does(philo, TAKE);
+		print_does(philo, EAT);
 		eating(philo);
-		print_does(philo, SLEEP, 0);
+		print_does(philo, SLEEP);
 		drop_spoon(philo);
 		usleep(philo->data->t_sleep);
-		print_does(philo, THINK, 0);
+		print_does(philo, THINK);
 	}
 	return (NULL);
 }
