@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:22:51 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/13 14:21:24 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:10:32 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	is_die(t_data *data)
 		{
 			// printf("Limit: %llu\tTimestamp: %llu\n", limit, timestamp);
 			// printf("Last meal: %llu\t%d\n", data->philo[i].last_meal, i + 1);
-			print_does(&data->philo[i], DIE);
+			print_does(&data->philo[i], DIE, 0);
 			data->is_dead = 1;
 			return (1);
 		}
@@ -52,7 +52,7 @@ static int	all_eating(t_data *data)
 				&& data->philo[i].eats < data->num_meals))
 		{
 			// printf("Not eaten enough\n");
-			return (0);
+			// return (0);
 		}
 		i++;
 	}
