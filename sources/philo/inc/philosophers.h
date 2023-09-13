@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/13 12:42:01 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/13 13:48:57 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ enum
 	THINK,
 	DIE,
 };
-// "\xF0\x9F\x8D\x9A \033[1;31mIs eating\x1B[0m",
 
 const static char	*g_party[] = {
 	"\xF0\x9F\xA5\x84 \033[0;32mHas taken spoon\x1B[0m",
@@ -50,7 +49,7 @@ const static char	*g_party[] = {
 typedef struct s_philosopher
 {
 	struct s_data	*data;
-	int num; //
+	int				num;
 	uint64_t		last_meal;
 	int				eats;
 }					t_philo;
@@ -60,12 +59,12 @@ typedef struct s_data
 	pthread_t		*id;
 	pthread_mutex_t	*mutex;
 	pthread_mutex_t	m_print;
-	t_philo *philo; //
-	int num_philos; //
-	int num_meals;  //
-	int t_die;      //
-	int t_eat;      //
-	int t_sleep;    //
+	t_philo			*philo;
+	int				num_philos;
+	int				num_meals;
+	int				t_die;
+	int				t_eat;
+	int				t_sleep;
 	int				is_dead;
 }					t_data;
 
