@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/13 12:21:16 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:42:01 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_data
 	int t_die;      //
 	int t_eat;      //
 	int t_sleep;    //
+	int				is_dead;
 }					t_data;
 
 void				utils(void);
@@ -76,7 +77,7 @@ int					init_data(int argc, char *argv[], t_data *data);
 void				*processes(void *arg);
 uint64_t			times_ms(void);
 uint64_t			time_elapsed(void);
-// void				print_does(t_philo *philo, int type);
+void				print_does(t_philo *philo, int type);
 void				waiting(t_data *data);
 int					is_die(t_data *data);
 

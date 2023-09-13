@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:22:51 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/13 12:26:51 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:42:26 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ int	is_die(t_data *data)
 		// printf("Limit: %llu\tTimestamp: %llu\n", limit, timestamp);
 		if (limit < timestamp)
 		{
-			printf(CYAN "%04llums " RESET, timestamp);
-			printf(MAGENTA "#%02d " RESET, data->philo[i].num);
-			printf("%s", g_party[DIE]);
+			print_does(&data->philo[i], DIE);
+			// printf(CYAN "%04llums " RESET, timestamp);
+			// printf(MAGENTA "#%02d " RESET, data->philo[i].num);
+			// printf("%s", g_party[DIE]);
+			data->is_dead = 1;
 			return (1);
 		}
 		i++;

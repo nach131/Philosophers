@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/13 12:28:51 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:44:06 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	print_does(t_philo *philo, int type)
 {
 	char	*mss;
 
+	if (philo->data->is_dead)
+		return ;
 	mss = (char *)g_party[type];
 	pthread_mutex_lock(&philo->data->m_print);
 	printf(CYAN "%04llums " RESET, time_elapsed());
@@ -194,9 +196,15 @@ void	*processes(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	// usleep(1);
+	// usleep(100);
+	pthread_mutex_lock(&philo->data->m_print);
+	pthread_mutex_unlock(&philo->data->m_print);
+	// if (philo->num % 2 == 0)
+	// usleep(philo->data->t_eat * 1000);
 	while (1)
 	{
+		if (is_die(philo->data))
+			break ;
 		take_spoon(philo);
 		print_does(philo, TAKE);
 		print_does(philo, EAT);
@@ -205,8 +213,6 @@ void	*processes(void *arg)
 		print_does(philo, SLEEP);
 		usleep(philo->data->t_sleep * 1000);
 		print_does(philo, THINK);
-		if (is_die(philo->data))
-			break ;
 	}
 	return (NULL);
 }

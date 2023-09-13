@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/13 12:16:32 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:35:33 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	free_data(t_data *data)
 int	main(int argc, char *argv[])
 {
 	t_data	*data;
+	int		i;
 
 	if (argc < 5 || argc > 6)
 	{
@@ -95,6 +96,12 @@ int	main(int argc, char *argv[])
 	waiting(data);
 	// usleep(100000000);
 	pthread_mutex_destroy(&data->m_print);
+	i = -1;
+	while (++i < data->num_philos)
+	{
+		pthread_mutex_destroy(&data->mutex[i]);
+		pthread_join(data->id[i], NULL);
+	}
 	free_data(data);
 	free(data);
 	return (0);
