@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/12 17:26:50 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:21:16 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ enum
 	THINK,
 	DIE,
 };
-
 // "\xF0\x9F\x8D\x9A \033[1;31mIs eating\x1B[0m",
 
 const static char	*g_party[] = {
@@ -79,5 +78,6 @@ uint64_t			times_ms(void);
 uint64_t			time_elapsed(void);
 // void				print_does(t_philo *philo, int type);
 void				waiting(t_data *data);
+int					is_die(t_data *data);
 
 #endif

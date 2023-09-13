@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:07:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/12 15:58:01 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:26:35 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,16 @@ int	init_data(int argc, char *argv[], t_data *data)
 {
 	data->num_philos = ft_atoi(argv[1]);
 	data->philo = ft_calloc(data->num_philos, sizeof(t_philo));
-	data->t_die = ft_atoi(argv[2]) * 1000;
-	data->t_eat = ft_atoi(argv[3]) * 1000;
-	data->t_sleep = ft_atoi(argv[4]) * 1000;
+	// data->t_die = ft_atoi(argv[2]) * 1000;
+	// data->t_eat = ft_atoi(argv[3]) * 1000;
+	// data->t_sleep = ft_atoi(argv[4]) * 1000;
+	data->t_die = ft_atoi(argv[2]);
+	data->t_eat = ft_atoi(argv[3]);
+	data->t_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
 		data->num_meals = ft_atoi(argv[5]);
+	else
+		data->num_meals = 0;
 	if (data->num_philos < 0 || data->t_die < 0 || data->t_eat < 0
 		|| data->t_sleep < 0 || data->num_meals < 0)
 	{

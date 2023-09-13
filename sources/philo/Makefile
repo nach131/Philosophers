@@ -71,7 +71,7 @@ $(OBJ_DIR)%.o : $(SRC_DIR)%.c Makefile
 all: $(NAME)
 
 $(NAME):	$(ALL_OBJS)
-			@$(CC) $(CFLAGS) $^ -o $@
+			@$(CC) $(CFLAGS) $(TSAN) $^ -o $@
 			@echo "$(ORANGE) Compilando Ejecutable  ➟  $(RED)$@ $(WHITE)"
 
 clean :
