@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:22:51 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/13 15:10:32 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:08:31 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ int	is_die(t_data *data)
 		timestamp = time_elapsed();
 		if (limit < timestamp)
 		{
-			// printf("Limit: %llu\tTimestamp: %llu\n", limit, timestamp);
-			// printf("Last meal: %llu\t%d\n", data->philo[i].last_meal, i + 1);
-			print_does(&data->philo[i], DIE, 0);
+			print_does(&data->philo[i], DIE);
 			data->is_dead = 1;
 			return (1);
 		}
@@ -38,22 +36,17 @@ int	is_die(t_data *data)
 	return (0);
 }
 
-static int	all_eating(t_data *data)
+int	all_eating(t_data *data)
 {
 	int	i;
 
 	i = 0;
 	while (i < data->num_philos)
 	{
-		// printf(UORANGE "\tcomidas: %d\n" RESET, data->philo[i].eats);
-		// printf("philo: %d ", data->philo[i].num);
-		// printf(UORANGE "comidas: %d\n" RESET, data->philo[i].eats);
-		if (!data->num_meals || (data->num_meals
-				&& data->philo[i].eats < data->num_meals))
-		{
-			// printf("Not eaten enough\n");
-			// return (0);
-		}
+		if ((data->philo[i].eats < data->num_meals))
+			// if (!data->num_meals || (data->num_meals
+			// 		&& data->philo[i].eats < data->num_meals))
+			return (0);
 		i++;
 	}
 	// data->is_dead = 1;

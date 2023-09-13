@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/13 15:38:52 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:06:41 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,9 @@ int					init_data(int argc, char *argv[], t_data *data);
 void				*processes(void *arg);
 uint64_t			times_ms(void);
 uint64_t			time_elapsed(void);
-void print_does(t_philo *philo, int type, int spoon);
+void				print_does(t_philo *philo, int type);
 void				waiting(t_data *data);
 int					is_die(t_data *data);
+int					all_eating(t_data *data);
 
 #endif
