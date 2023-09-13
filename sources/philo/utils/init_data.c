@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:07:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/12 15:58:01 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:01:13 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 void	create_philo(t_data *dt, int i)
 {
-	dt->philo[i].num = i + 1;
 	dt->philo[i].data = dt;
+	dt->philo[i].num = i + 1;
 }
 
 void static	init_threads_mutex(t_data *dt)
@@ -32,11 +32,13 @@ void static	init_threads_mutex(t_data *dt)
 	while (++i < dt->num_philos)
 		pthread_mutex_init(&dt->mutex[i], NULL);
 	i = -1;
+	pthread_mutex_lock(&dt->m_print);
 	while (++i < dt->num_philos)
 	{
-		pthread_create(&dt->id[i], NULL, &processes, &dt->philo[i]);
 		create_philo(dt, i);
+		pthread_create(&dt->id[i], NULL, &processes, &dt->philo[i]);
 	}
+	pthread_mutex_unlock(&dt->m_print);
 }
 
 int	init_data(int argc, char *argv[], t_data *data)
