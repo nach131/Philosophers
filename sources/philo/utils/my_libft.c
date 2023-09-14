@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:06:27 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/31 11:35:41 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:39:41 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	ft_message(int err, char *msg)
 {
 	char	*str;
 
-	// pthread_mutex_lock(printf_mutex);
 	if (err == DANGER)
 	{
 		str = ft_strjoin(RED, msg);
@@ -86,17 +85,14 @@ void	ft_message(int err, char *msg)
 	else if (err == SUCCESS)
 		printf(GREEN "%s", msg);
 	printf(WHITE "\n");
-	// pthread_mutex_unlock(printf_mutex);
 }
 
 int	ft_atoi(const char *str)
 {
 	int	i;
-	// int	minus;
 	int	number;
 
 	i = 0;
-	// minus = 1;
 	number = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;

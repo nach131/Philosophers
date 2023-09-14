@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/14 13:50:19 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:42:05 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	take_spoon(t_philo *philo)
 		print_does(philo, TAKE);
 		if (philo->num == 1)
 			pthread_mutex_lock(&philo->data->mutex[philo->data->num_philos
-					- 1]);
+				- 1]);
 		else
 			pthread_mutex_lock(&philo->data->mutex[philo->num - 2]);
 		print_does(philo, TAKE);
@@ -59,7 +59,7 @@ static void	drop_spoon(t_philo *philo)
 		pthread_mutex_unlock(&philo->data->mutex[philo->num - 1]);
 		if (philo->num == 1)
 			pthread_mutex_unlock(&philo->data->mutex[philo->data->num_philos
-					- 1]);
+				- 1]);
 		else
 			pthread_mutex_unlock(&philo->data->mutex[philo->num - 2]);
 	}
@@ -91,8 +91,6 @@ void	*processes(void *arg)
 	{
 		if (philo->data->is_dead || philo->eats == philo->data->num_meals)
 			break ;
-		// if (philo->eats == philo->data->num_meals)
-		// 	break ;
 		take_spoon(philo);
 		print_does(philo, EAT);
 		eating(philo);

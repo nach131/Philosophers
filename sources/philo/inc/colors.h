@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 00:37:54 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/12 12:20:39 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:29:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,5 @@
 
 // \x1B es la secuencia de escape ANSI.
 // [3m activa el formato de texto en cursiva.
-// [38;2;255;165;0m establece el color utilizando el modelo de color RGB para obtener naranja.
+// [38;2;255;165;0m establece el color utilizando
+// el modelo de color RGB para obtener naranja.

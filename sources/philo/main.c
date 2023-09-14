@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/14 13:42:41 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:39:08 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	err_argc(void)
+static void	err_argc(void)
 {
 	ft_message(DANGER, "Missing arguments:");
 	printf("\x1B[41m\x1B[1m\x1B%s\x1B[0m \x1B[41m\x1B[1m\x1B%s\x1B[0m "
-			"\x1B[41m\x1B[1m\x1B%s\x1B[0m \x1B[41m\x1B[1m\x1B%s\x1B[0m "
-			"\x1B[41m\x1B[1m\x1B%s\x1B[0m\n",
-			g_mss[0],
-			g_mss[1],
-			g_mss[2],
-			g_mss[3],
-			g_mss[4]);
+		"\x1B[41m\x1B[1m\x1B%s\x1B[0m \x1B[41m\x1B[1m\x1B%s\x1B[0m "
+		"\x1B[41m\x1B[1m\x1B%s\x1B[0m\n",
+		g_mss[0],
+		g_mss[1],
+		g_mss[2],
+		g_mss[3],
+		g_mss[4]);
 	ft_message(INFO, (char *)g_args[0]);
 	ft_message(INFO, (char *)g_args[1]);
 	ft_message(INFO, (char *)g_args[2]);
@@ -42,7 +42,7 @@ void	err_argc(void)
 	printf(ICYAN "\t   **(Time in milliseconds).\n" RESET);
 }
 
-void	free_data(t_data *data)
+static void	free_data(t_data *data)
 {
 	if (data->mutex)
 		free(data->mutex);
@@ -52,10 +52,21 @@ void	free_data(t_data *data)
 		free(data->philo);
 }
 
+static void	destroy(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	while (++i < data->num_philos)
+	{
+		pthread_mutex_destroy(&data->mutex[i]);
+		pthread_join(data->id[i], NULL);
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	t_data	*data;
-	int		i;
 
 	if (argc < 5 || argc > 6)
 	{
@@ -70,14 +81,8 @@ int	main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	}
 	waiting(data);
-	// usleep(1000);
 	pthread_mutex_destroy(&data->m_print);
-	i = -1;
-	while (++i < data->num_philos)
-	{
-		pthread_mutex_destroy(&data->mutex[i]);
-		pthread_join(data->id[i], NULL);
-	}
+	destroy(data);
 	free_data(data);
 	free(data);
 	return (0);
