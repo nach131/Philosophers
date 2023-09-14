@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:38:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/04 13:38:59 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/14 18:17:18 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,3 +85,12 @@ int main(void)
 
 	return 0;
 }
+
+// hilo #0, Tu turno 1
+// hilo #1, Tu turno 2
+// hilo #2, Tu turno 2
+// hilo #3, Tu turno 2
+// hilo #0, Tu turno 3
+// hilo #1, Tu turno 4
+// hilo #2, Tu turno 4
+// hilo #3, Tu turno 4

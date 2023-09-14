@@ -196,6 +196,17 @@ Desbloquear un objeto mutex que ha sido bloqueado previamente con la función `p
 
 </details>
 
+### Pruebas con hilos
+
+4 hilos, cada hilo con un color difereten ejecuntadoses todos en el mismo turno
+
+[hilos_v4](funciones/pruebas/hilos_v4.c)
+
+4 hilos, cada hilo con color diferente y en turnos diferentes
+
+[hilos_v5](funciones/pruebas/hilos_v5.c)
+
+
 
 ### Markmap
 <p align="center">

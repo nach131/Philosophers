@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:17:15 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/04 14:56:39 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/14 18:16:06 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int main(void)
 		// Espera a que los hilos terminen antes de salir del programa
 		pthread_join(data[i].id_hilo, NULL);
 		// Destruye los mutexes
-		pthread_mutex_destroy(&data[i].m);
+		pthread_mutex_destroy(&data[i].mutex);
 	}
 
 	return 0;
