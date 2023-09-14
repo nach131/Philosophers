@@ -195,3 +195,9 @@ Desbloquear un objeto mutex que ha sido bloqueado previamente con la función `p
 - `mutex` es un puntero al objeto mutex que se desea desbloquear.
 
 </details>
+
+
+### Markmap
+<p align="center">
+<img alt="Markmap" src="https://github.com/nach131/Philosophers/blob/main/markmap.png" style="width: 80%;">
+</p>
