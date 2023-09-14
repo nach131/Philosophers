@@ -8,7 +8,8 @@
 		"libft.h": "c",
 		"limits.h": "c",
 		"error.h": "c",
-		"stdbool.h": "c"
+		"stdbool.h": "c",
+		"stdlib.h": "c"
 	},
 	"editor.fontLigatures": false,
 	"lldb.dbgconfig": {}

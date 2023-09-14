@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/13 17:54:18 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:42:41 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	main(int argc, char *argv[])
 		free(data);
 		return (EXIT_FAILURE);
 	}
-	usleep(1000);
 	waiting(data);
+	// usleep(1000);
 	pthread_mutex_destroy(&data->m_print);
 	i = -1;
 	while (++i < data->num_philos)

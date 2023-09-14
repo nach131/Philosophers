@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:22:51 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/13 18:08:31 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:39:51 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,19 @@ int	is_die(t_data *data)
 int	all_eating(t_data *data)
 {
 	int	i;
+	int	flag;
 
-	i = 0;
-	while (i < data->num_philos)
+	flag = 0;
+	i = -1;
+	while (++i < data->num_philos)
 	{
-		if ((data->philo[i].eats < data->num_meals))
-			// if (!data->num_meals || (data->num_meals
-			// 		&& data->philo[i].eats < data->num_meals))
+		if (data->philo[i].eats < data->num_meals)
+			flag = 0;
+		else
+			flag = 1;
+		if (!flag)
 			return (0);
-		i++;
 	}
-	// data->is_dead = 1;
 	return (1);
 }
 
@@ -57,9 +59,7 @@ void	waiting(t_data *data)
 {
 	while (42)
 	{
-		if (is_die(data))
-			return ;
-		if (all_eating(data))
+		if (is_die(data) || all_eating(data))
 			return ;
 	}
 }

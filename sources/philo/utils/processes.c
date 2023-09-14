@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/13 18:06:25 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:50:19 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ void	print_does(t_philo *philo, int type)
 	pthread_mutex_lock(&philo->data->m_print);
 	printf(CYAN "%04llums " RESET, time_elapsed());
 	printf(MAGENTA "#%02d " RESET, philo->num);
-	// if (spoon)
-	// 	printf("%s[%d]\n", mss, spoon);
-	// else
 	printf("%s\n", mss);
 	pthread_mutex_unlock(&philo->data->m_print);
 }
@@ -75,11 +72,12 @@ static void	drop_spoon(t_philo *philo)
 
 static void	eating(t_philo *philo)
 {
-	usleep(philo->data->t_eat * 1000);
-	philo->eats++;
-	philo->last_meal = time_elapsed();
-	// printf("Eating: %d\t%d\t%llu\n", philo->num, philo->eats,
-	// philo->last_meal);
+	if (philo->eats < philo->data->num_meals)
+	{
+		usleep(philo->data->t_eat * 1000);
+		philo->eats++;
+		philo->last_meal = time_elapsed();
+	}
 }
 
 void	*processes(void *arg)
@@ -87,17 +85,14 @@ void	*processes(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	// printf("Before: %d\n", philo->num);
 	pthread_mutex_lock(&philo->data->m_print);
 	pthread_mutex_unlock(&philo->data->m_print);
-	// printf("After: %d\n", philo->num);
-	usleep(10);
 	while (1)
 	{
-		if (is_die(philo->data))
+		if (philo->data->is_dead || philo->eats == philo->data->num_meals)
 			break ;
-		if (all_eating(philo->data))
-			break ;
+		// if (philo->eats == philo->data->num_meals)
+		// 	break ;
 		take_spoon(philo);
 		print_does(philo, EAT);
 		eating(philo);
