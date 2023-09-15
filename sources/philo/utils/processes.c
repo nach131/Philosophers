@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/14 17:42:05 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/15 17:26:05 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,44 +30,64 @@ void	print_does(t_philo *philo, int type)
 	pthread_mutex_unlock(&philo->data->m_print);
 }
 
-static void	take_spoon(t_philo *philo)
+static void choose_spoon(t_philo *philo, int *spoon_l, int *spoon_r)
 {
+	int flag;
+
 	if (philo->num % 2)
 	{
-		pthread_mutex_lock(&philo->data->mutex[philo->num - 1]);
-		print_does(philo, TAKE);
-		if (philo->num == 1)
-			pthread_mutex_lock(&philo->data->mutex[philo->data->num_philos
-				- 1]);
+		if (philo->data->num_philos % 2)
+			flag = 0;
 		else
-			pthread_mutex_lock(&philo->data->mutex[philo->num - 2]);
-		print_does(philo, TAKE);
+			flag = 1;
 	}
 	else
 	{
-		pthread_mutex_lock(&philo->data->mutex[philo->num - 2]);
-		print_does(philo, TAKE);
-		pthread_mutex_lock(&philo->data->mutex[philo->num - 1]);
-		print_does(philo, TAKE);
+		if (philo->data->num_philos % 2)
+			flag = 1;
+		else
+			flag = 0;
 	}
+	if (flag)
+	{
+		*spoon_l = (philo->num - 1) % (philo->data->num_philos);
+		*spoon_r = philo->num;
+		return;
+	}
+	*spoon_l = philo->num;
+	*spoon_r = (philo->num - 1) % (philo->data->num_philos);
 }
 
-static void	drop_spoon(t_philo *philo)
+static void take_spoon(t_philo *philo)
 {
-	if (philo->num % 2)
-	{
-		pthread_mutex_unlock(&philo->data->mutex[philo->num - 1]);
-		if (philo->num == 1)
-			pthread_mutex_unlock(&philo->data->mutex[philo->data->num_philos
-				- 1]);
-		else
-			pthread_mutex_unlock(&philo->data->mutex[philo->num - 2]);
-	}
-	else
-	{
-		pthread_mutex_unlock(&philo->data->mutex[philo->num - 2]);
-		pthread_mutex_unlock(&philo->data->mutex[philo->num - 1]);
-	}
+
+	int spoon_l;
+	int spoon_r;
+
+	choose_spoon(philo, &spoon_l, &spoon_r);
+
+	pthread_mutex_lock(philo->data->mutex + spoon_l);
+	// print_does(philo, TAKE);
+
+	pthread_mutex_lock(&philo->data->m_print);
+	printf(CYAN "%04llums " RESET, time_elapsed());
+	printf(MAGENTA "#%02d " RESET, philo->num);
+	printf("%s[%d]\n", g_party[TAKE], spoon_l);
+	pthread_mutex_unlock(&philo->data->m_print);
+
+	pthread_mutex_lock(philo->data->mutex + spoon_r);
+	// print_does(philo, TAKE);
+	pthread_mutex_lock(&philo->data->m_print);
+	printf(CYAN "%04llums " RESET, time_elapsed());
+	printf(MAGENTA "#%02d " RESET, philo->num);
+	printf("%s[%d]\n", g_party[TAKE], spoon_r);
+	pthread_mutex_unlock(&philo->data->m_print);
+}
+
+static void drop_spoon(t_philo *philo)
+{
+	pthread_mutex_unlock(philo->data->mutex + ((philo->num + 1) % philo->data->num_philos));
+	pthread_mutex_unlock(philo->data->mutex + (philo->num));
 }
 
 static void	eating(t_philo *philo)
