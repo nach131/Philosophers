@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:22:51 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/14 13:39:51 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/17 10:30:42 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ int	all_eating(t_data *data)
 void	waiting(t_data *data)
 {
 	while (42)
-	{
 		if (is_die(data) || all_eating(data))
-			return ;
-	}
+			return;
 }

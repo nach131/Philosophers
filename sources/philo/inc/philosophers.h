@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/14 17:54:26 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/17 10:31:06 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_data
 
 int					init_data(int argc, char *argv[], t_data *data);
 void				*processes(void *arg);
-uint64_t			times_ms(void);
+// uint64_t			times_ms(void);
 uint64_t			time_elapsed(void);
 void				print_does(t_philo *philo, int type);
 void				waiting(t_data *data);

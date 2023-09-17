@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/15 17:26:05 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/17 12:07:13 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-void	print_does(t_philo *philo, int type)
+void print_does(t_philo *philo, int type)
 {
-	char	*mss;
+	char *mss;
 
 	if (philo->data->is_dead)
-		return ;
+		return;
 	mss = (char *)g_party[type];
 	pthread_mutex_lock(&philo->data->m_print);
 	printf(CYAN "%04llums " RESET, time_elapsed());
@@ -50,12 +50,12 @@ static void choose_spoon(t_philo *philo, int *spoon_l, int *spoon_r)
 	}
 	if (flag)
 	{
-		*spoon_l = (philo->num - 1) % (philo->data->num_philos);
-		*spoon_r = philo->num;
+		*spoon_l = philo->num % (philo->data->num_philos);
+		*spoon_r = philo->num - 1;
 		return;
 	}
-	*spoon_l = philo->num;
-	*spoon_r = (philo->num - 1) % (philo->data->num_philos);
+	*spoon_l = philo->num - 1;
+	*spoon_r = philo->num % (philo->data->num_philos);
 }
 
 static void take_spoon(t_philo *philo)
@@ -67,6 +67,7 @@ static void take_spoon(t_philo *philo)
 	choose_spoon(philo, &spoon_l, &spoon_r);
 
 	pthread_mutex_lock(philo->data->mutex + spoon_l);
+	// printf("\tl%d\n", spoon_l);
 	// print_does(philo, TAKE);
 
 	pthread_mutex_lock(&philo->data->m_print);
@@ -76,6 +77,7 @@ static void take_spoon(t_philo *philo)
 	pthread_mutex_unlock(&philo->data->m_print);
 
 	pthread_mutex_lock(philo->data->mutex + spoon_r);
+	// printf("\tr%d\n", spoon_r);
 	// print_does(philo, TAKE);
 	pthread_mutex_lock(&philo->data->m_print);
 	printf(CYAN "%04llums " RESET, time_elapsed());
@@ -86,8 +88,8 @@ static void take_spoon(t_philo *philo)
 
 static void drop_spoon(t_philo *philo)
 {
-	pthread_mutex_unlock(philo->data->mutex + ((philo->num + 1) % philo->data->num_philos));
-	pthread_mutex_unlock(philo->data->mutex + (philo->num));
+	pthread_mutex_unlock(philo->data->mutex + (philo->num % philo->data->num_philos));
+	pthread_mutex_unlock(philo->data->mutex + (philo->num - 1));
 }
 
 static void	eating(t_philo *philo)
@@ -100,9 +102,9 @@ static void	eating(t_philo *philo)
 	}
 }
 
-void	*processes(void *arg)
+void *processes(void *arg)
 {
-	t_philo	*philo;
+	t_philo *philo;
 
 	philo = (t_philo *)arg;
 	pthread_mutex_lock(&philo->data->m_print);
