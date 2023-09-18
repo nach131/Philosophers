@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:07:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/18 10:15:48 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:20:18 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,6 @@ int	init_data(int argc, char *argv[], t_data *data)
 		ft_message(DANGER, "All arguments have to be positive.");
 		return (1);
 	}
-	// else if (data->num_philos <= 1)
-	// {
-	// 	ft_message(DANGER, "Minimum two philosophers.");
-	// 	return (1);
-	// }
 	init_threads_mutex(data);
 	return (0);
 }
