@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/17 12:07:13 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/18 10:25:48 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,51 @@ static void choose_spoon(t_philo *philo, int *spoon_l, int *spoon_r)
 	}
 	if (flag)
 	{
-		*spoon_l = philo->num % (philo->data->num_philos);
+		*spoon_l = philo->num % philo->data->num_philos;
 		*spoon_r = philo->num - 1;
 		return;
 	}
 	*spoon_l = philo->num - 1;
-	*spoon_r = philo->num % (philo->data->num_philos);
+	*spoon_r = philo->num % philo->data->num_philos;
 }
+
+static void drop_spoon(t_philo *philo)
+{
+	pthread_mutex_unlock(philo->data->mutex + (philo->num % philo->data->num_philos));
+	pthread_mutex_unlock(philo->data->mutex + (philo->num - 1));
+}
+
+// static void choose_spoon(t_philo *philo, int *spoon_l, int *spoon_r)
+// {
+// 	*spoon_l = philo->num % philo->data->num_philos;
+// 	*spoon_r = (philo->num + 1) % philo->data->num_philos;
+
+// 	// Intercambia los tenedores si el número de filósofos es par
+// 	if (philo->data->num_philos % 2 == 0 && philo->num % 2 == 0)
+// 	{
+// 		int temp = *spoon_l;
+// 		*spoon_l = *spoon_r;
+// 		*spoon_r = temp;
+// 	}
+// }
+
+// static void drop_spoon(t_philo *philo)
+// {
+// 	pthread_mutex_unlock(philo->data->mutex + (philo->num % philo->data->num_philos));
+// 	pthread_mutex_unlock(philo->data->mutex + (philo->num + 1) % philo->data->num_philos);
+// }
+
+// static void take_spoon(t_philo *philo)
+// {
+
+// 	int spoon_l;
+// 	int spoon_r;
+// 	choose_spoon(philo, &spoon_l, &spoon_r);
+// 	pthread_mutex_lock(philo->data->mutex + spoon_l);
+// 	print_does(philo, TAKE);
+// 	pthread_mutex_lock(philo->data->mutex + spoon_r);
+// 	print_does(philo, TAKE);
+// }
 
 static void take_spoon(t_philo *philo)
 {
@@ -64,6 +102,12 @@ static void take_spoon(t_philo *philo)
 	int spoon_l;
 	int spoon_r;
 
+	// if (philo->data->num_philos % 2)
+	// {
+	// 	printf(RED "impar\n" RESET);
+	// 	choose_spoon_im(philo, &spoon_l, &spoon_r);
+	// }
+	// else
 	choose_spoon(philo, &spoon_l, &spoon_r);
 
 	pthread_mutex_lock(philo->data->mutex + spoon_l);
@@ -86,19 +130,13 @@ static void take_spoon(t_philo *philo)
 	pthread_mutex_unlock(&philo->data->m_print);
 }
 
-static void drop_spoon(t_philo *philo)
-{
-	pthread_mutex_unlock(philo->data->mutex + (philo->num % philo->data->num_philos));
-	pthread_mutex_unlock(philo->data->mutex + (philo->num - 1));
-}
-
 static void	eating(t_philo *philo)
 {
 	if (philo->eats < philo->data->num_meals)
 	{
-		usleep(philo->data->t_eat * 1000);
 		philo->eats++;
 		philo->last_meal = time_elapsed();
+		usleep(philo->data->t_eat * 1000);
 	}
 }
 
@@ -111,6 +149,7 @@ void *processes(void *arg)
 	pthread_mutex_unlock(&philo->data->m_print);
 	while (1)
 	{
+
 		if (philo->data->is_dead || philo->eats == philo->data->num_meals)
 			break ;
 		take_spoon(philo);

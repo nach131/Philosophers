@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/17 11:39:24 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/18 10:25:38 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	destroy(t_data *data)
 		pthread_mutex_destroy(&data->mutex[i]);
 		pthread_join(data->id[i], NULL);
 	}
+	pthread_mutex_destroy(&data->m_print);
 }
 
 int	main(int argc, char *argv[])
@@ -81,8 +82,6 @@ int	main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	}
 	waiting(data);
-
-	pthread_mutex_destroy(&data->m_print);
 	destroy(data);
 	free_data(data);
 	free(data);

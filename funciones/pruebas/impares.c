@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   spoon.c                                            :+:      :+:    :+:   */
+/*   impares.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/17 11:29:29 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/17 21:31:33 by nmota-bu         ###   ########.fr       */
+/*   Created: 2023/09/17 21:30:57 by nmota-bu          #+#    #+#             */
+/*   Updated: 2023/09/17 21:37:15 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,13 @@
 
 int main(void)
 {
-	int spoon;
-	int i;
-	i = -1;
+	int i = -1;
 
-	while (++i < 4)
+	while (++i <= 5)
 	{
-		spoon = (i % 4);
-		printf("i:%d, spoon:%d\n", i + 1, spoon);
+		if (i % 2)
+			printf("%d, es impar\n", i);
+		// else
+		// printf("%d, es par\n", i);
 	}
 }
-
-// i:1, spoon:0
-// i:2, spoon:1
-// i:3, spoon:2
-// i:4, spoon:3
