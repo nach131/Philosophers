@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/18 10:25:38 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:42:47 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+
+void	print_does(t_philo *philo, int type)
+{
+	char	*mss;
+
+	if (philo->data->is_dead)
+		return ;
+	mss = (char *)g_party[type];
+	pthread_mutex_lock(&philo->data->m_print);
+	printf(CYAN "%04llums " RESET, time_elapsed());
+	printf(MAGENTA "#%02d " RESET, philo->num);
+	printf("%s\n", mss);
+	pthread_mutex_unlock(&philo->data->m_print);
+}
 
 static void	err_argc(void)
 {

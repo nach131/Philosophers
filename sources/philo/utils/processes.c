@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/18 17:33:24 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:48:02 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,6 @@
 #include "philosophers.h"
 #include <stdbool.h>
 #include <stdio.h>
-
-void	print_does(t_philo *philo, int type)
-{
-	char	*mss;
-
-	if (philo->data->is_dead)
-		return ;
-	mss = (char *)g_party[type];
-	pthread_mutex_lock(&philo->data->m_print);
-	printf(CYAN "%04llums " RESET, time_elapsed());
-	printf(MAGENTA "#%02d " RESET, philo->num);
-	printf("%s\n", mss);
-	pthread_mutex_unlock(&philo->data->m_print);
-}
 
 static void	choose_spoon(t_philo *philo, int *spoon_l, int *spoon_r)
 {
@@ -39,7 +25,7 @@ static void	choose_spoon(t_philo *philo, int *spoon_l, int *spoon_r)
 static void	drop_spoon(t_philo *philo)
 {
 	pthread_mutex_unlock(philo->data->mutex + (philo->num
-				% philo->data->num_philos));
+			% philo->data->num_philos));
 	pthread_mutex_unlock(philo->data->mutex + (philo->num - 1));
 }
 
