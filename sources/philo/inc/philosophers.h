@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/17 10:31:06 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:12:39 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ void				print_does(t_philo *philo, int type);
 void				waiting(t_data *data);
 int					is_die(t_data *data);
 int					all_eating(t_data *data);
+void my_sleep(uint64_t wait);
 
 #endif
