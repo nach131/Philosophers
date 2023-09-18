@@ -2,12 +2,6 @@
 
 ## main.c
 
-- Función err_argc()
-    - Muestra error si faltan argumentos
-- Función free_data()
-    - Libera memoria 
-- Función destroy()
-    - Destruye mutex e hilos
 - main()
     - Validación de argumentos
     - Inicialización de datos
@@ -16,6 +10,14 @@
         - waiting()
     - Destruye mutex
     - Libera memoria
+- print_does()
+    - Imprime estado de filósofo
+- err_argc()
+    - Muestra error si faltan argumentos
+- free_data()
+    - Libera memoria 
+- destroy()
+    - Destruye mutex e hilos
 
 ## init_data.c
 - init_data()
@@ -31,24 +33,22 @@
     - Inicializa estructura de filósofo
 
 ## processes.c
-- print_does()
-    - Imprime estado de filósofo
+- processes()
+    - Bucle de estados de filósofo
 - take_spoon()
     - Toma Cuchara/mutex
 - drop_spoon()
     - Suelta Cuchara/mutex	
 - eating()
     - Simula comer
-- processes()
-    - Bucle de estados de filósofo
 
 ## waiting.c
+- waiting()
+    - Espera a que terminen procesos
 - is_die()
     - Comprueba si alguno muere
 - all_eating()
     - Comprueba si terminaron de comer
-- waiting()
-    - Espera a que terminen procesos
 
 ## clock.c
 - Funciones para manejar tiempo
