@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/18 17:48:02 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/19 21:12:10 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	*processes(void *arg)
 	pthread_mutex_unlock(&philo->data->m_print);
 	if (!(philo->num % 2))
 		my_sleep(philo->data->t_eat);
-	while (1)
+	while (42)
 	{
 		if (philo->data->is_dead || philo->eats == philo->data->num_meals
 			|| philo->data->num_philos == 1)

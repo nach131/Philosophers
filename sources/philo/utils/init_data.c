@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:07:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/18 17:20:18 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/19 21:05:24 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ void	create_philo(t_data *dt, int i)
 	dt->philo[i].data = dt;
 }
 
-void static	init_threads_mutex(t_data *dt)
+int static init_threads_mutex(t_data *dt)
 {
 	int	i;
 
 	i = -1;
 	dt->id = malloc(sizeof(pthread_t) * dt->num_philos);
 	dt->mutex = malloc(sizeof(pthread_mutex_t) * dt->num_philos);
+	if (!dt->id || !dt->mutex)
+		return (1);
 	pthread_mutex_init(&dt->m_print, NULL);
 	while (++i < dt->num_philos)
 		pthread_mutex_init(&dt->mutex[i], NULL);
@@ -40,12 +42,15 @@ void static	init_threads_mutex(t_data *dt)
 		pthread_create(&dt->id[i], NULL, &processes, &dt->philo[i]);
 	}
 	pthread_mutex_unlock(&dt->m_print);
+	return (0);
 }
 
 int	init_data(int argc, char *argv[], t_data *data)
 {
-	data->num_philos = ft_atoi(argv[1]);
 	data->philo = ft_calloc(data->num_philos, sizeof(t_philo));
+	if (!data->philo)
+		return (1);
+	data->num_philos = ft_atoi(argv[1]);
 	data->t_die = ft_atoi(argv[2]);
 	data->t_eat = ft_atoi(argv[3]);
 	data->t_sleep = ft_atoi(argv[4]);
@@ -59,6 +64,7 @@ int	init_data(int argc, char *argv[], t_data *data)
 		ft_message(DANGER, "All arguments have to be positive.");
 		return (1);
 	}
-	init_threads_mutex(data);
+	if (init_threads_mutex(data))
+		return (1);
 	return (0);
 }
