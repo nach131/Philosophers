@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/18 17:34:55 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:02:08 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ void				waiting(t_data *data);
 int					is_die(t_data *data);
 int					all_eating(t_data *data);
 void				my_sleep(uint64_t wait);
+void				err_argc(int argc);
 
 #endif

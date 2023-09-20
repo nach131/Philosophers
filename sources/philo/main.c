@@ -6,12 +6,12 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/20 18:52:22 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:01:38 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* ╔════════════════════════════════════════════════════════════════════════╗ */
-/* ║                 https://github.com/nach131/42Barcelona                 ║ */
+/* ║                      https://github.com/nach131                        ║ */
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
 #include "colors.h"
@@ -36,25 +36,25 @@ void	print_does(t_philo *philo, int type)
 	pthread_mutex_unlock(&philo->data->m_print);
 }
 
-static void	err_argc(void)
-{
-	ft_message(DANGER, "Missing arguments:");
-	printf("\x1B[41m\x1B[1m\x1B%s\x1B[0m \x1B[41m\x1B[1m\x1B%s\x1B[0m "
-			"\x1B[41m\x1B[1m\x1B%s\x1B[0m \x1B[41m\x1B[1m\x1B%s\x1B[0m "
-			"\x1B[41m\x1B[1m\x1B%s\x1B[0m\n",
-			g_mss[0],
-			g_mss[1],
-			g_mss[2],
-			g_mss[3],
-			g_mss[4]);
-	ft_message(INFO, (char *)g_args[0]);
-	ft_message(INFO, (char *)g_args[1]);
-	ft_message(INFO, (char *)g_args[2]);
-	ft_message(INFO, (char *)g_args[3]);
-	ft_message(INFO, (char *)g_args[4]);
-	printf(ICYAN "\t    *(Minimum two philosophers).\n" RESET);
-	printf(ICYAN "\t   **(Time in milliseconds).\n" RESET);
-}
+// static void	err_argc(void)
+// {
+// 	ft_message(DANGER, "Missing arguments:");
+// 	printf("\x1B[41m\x1B[1m\x1B%s\x1B[0m \x1B[41m\x1B[1m\x1B%s\x1B[0m "
+// 			"\x1B[41m\x1B[1m\x1B%s\x1B[0m \x1B[41m\x1B[1m\x1B%s\x1B[0m "
+// 			"\x1B[41m\x1B[1m\x1B%s\x1B[0m\n",
+// 			g_mss[0],
+// 			g_mss[1],
+// 			g_mss[2],
+// 			g_mss[3],
+// 			g_mss[4]);
+// 	ft_message(INFO, (char *)g_args[0]);
+// 	ft_message(INFO, (char *)g_args[1]);
+// 	ft_message(INFO, (char *)g_args[2]);
+// 	ft_message(INFO, (char *)g_args[3]);
+// 	ft_message(INFO, (char *)g_args[4]);
+// 	printf(ICYAN "\t    *(Minimum two philosophers).\n" RESET);
+// 	printf(ICYAN "\t   **(Time in milliseconds).\n" RESET);
+// }
 
 static void	free_data(t_data *data)
 {
@@ -85,7 +85,7 @@ int	main(int argc, char *argv[])
 
 	if (argc < 5 || argc > 6)
 	{
-		err_argc();
+		err_argc(argc);
 		return (EXIT_FAILURE);
 	}
 	data = ft_calloc(1, sizeof(t_data));
