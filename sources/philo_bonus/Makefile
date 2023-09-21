@@ -2,7 +2,7 @@
 
 NAME		= philo_bonus
 
-# ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ COLORS ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄#
+# ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ colors_bonus ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄#
 
 GREEN		=\033[0;32m
 BLUE 		=\033[0;34m
@@ -45,8 +45,9 @@ UTILS_DIR	= utils/
 
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ SOURCES ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄#
 
-MAIN_FILES	=	main
-UTILS_FILES	= my_libft init_data my_libft2 processes clock waiting
+MAIN_FILES	=	main_bonus
+UTILS_FILES	= my_libft_bonus init_data_bonus my_libft2_bonus processes_bonus \
+clock_bonus waiting_bonus message_bonus
 
 SRC_MAIN_FILES	+=$(MAIN_FILES)
 SRCS_MAIN = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_MAIN_FILES)))

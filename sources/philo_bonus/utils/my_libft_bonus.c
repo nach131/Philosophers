@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_libft.c                                         :+:      :+:    :+:   */
+/*   my_libft_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:06:27 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/14 17:39:41 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:10:31 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 /* ║                 https://github.com/nach131/42Barcelona                 ║ */
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
-#include "colors.h"
-#include "error.h"
+#include "colors_bonus.h"
+#include "error_bonus.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-int	ft_strlen(const char *s)
+int ft_strlen(const char *s)
 {
-	size_t	i;
+	size_t i;
 
 	i = -1;
 	while (s[++i])
@@ -30,11 +30,11 @@ int	ft_strlen(const char *s)
 	return (i);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void *ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char	*de;
-	char	*sr;
-	size_t	i;
+	char *de;
+	char *sr;
+	size_t i;
 
 	de = (char *)dest;
 	sr = (char *)src;
@@ -51,11 +51,11 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (NULL);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-	char	*res;
-	size_t	len_s1;
-	size_t	len_s2;
+	char *res;
+	size_t len_s1;
+	size_t len_s2;
 
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
@@ -68,9 +68,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
-void	ft_message(int err, char *msg)
+void ft_message(int err, char *msg)
 {
-	char	*str;
+	char *str;
 
 	if (err == DANGER)
 	{
@@ -87,10 +87,10 @@ void	ft_message(int err, char *msg)
 	printf(WHITE "\n");
 }
 
-int	ft_atoi(const char *str)
+int ft_atoi(const char *str)
 {
-	int	i;
-	int	number;
+	int i;
+	int number;
 
 	i = 0;
 	number = 0;

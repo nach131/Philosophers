@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/20 19:59:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/21 09:25:19 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,3 +78,6 @@ void	*processes(void *arg)
 // time to sleep
 // si ya a muerto no esperar al time slep
 // ./philo 4 310 200 3000
+
+// errores
+// ./philo 2 300 200 100

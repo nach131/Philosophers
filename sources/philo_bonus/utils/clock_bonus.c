@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:31:38 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/14 17:47:12 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:39:52 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,11 @@ uint64_t	time_elapsed(void)
 	if (start == 0)
 		start = times_ms();
 	return (times_ms() - start);
+}
+
+void my_sleep(uint64_t wait)
+{
+	wait += time_elapsed();
+	while (wait >= time_elapsed())
+		usleep(100);
 }

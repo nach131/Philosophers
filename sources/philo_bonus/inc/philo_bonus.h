@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/14 21:13:10 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/21 19:04:55 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ typedef struct s_data
 {
 	// pthread_t		*id;
 	// pthread_mutex_t	*mutex;
-	sem_t			**forks;
-	sem_t			*m_print;
-	t_philo			*philo;
+	sem_t *spoon;
+	// sem_t			*m_print;
+	// t_philo			*philo;
 	int				num_philos;
 	int				num_meals;
 	int				t_die;
@@ -73,6 +73,7 @@ typedef struct s_data
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ UTILS ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
 int					init_data(int argc, char *argv[], t_data *data);
+void err_argc(int argc);
 void				*processes(void *arg);
 uint64_t			times_ms(void);
 uint64_t			time_elapsed(void);
@@ -81,6 +82,7 @@ void				waiting(t_data *data);
 int					is_die(t_data *data);
 int					all_eating(t_data *data);
 char				*ft_itoa(int n);
+void my_sleep(uint64_t wait);
 
 void				*philosopher_life(void *arg);
 #endif

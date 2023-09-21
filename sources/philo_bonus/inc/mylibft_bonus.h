@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mylibft.h                                          :+:      :+:    :+:   */
+/*   mylibft_bonus_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:05:16 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/31 17:47:25 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:02:21 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MYLIBFT_H
-# define MYLIBFT_H
+#ifndef MYLIBFT_BONUS_H
+# define MYLIBFT_BONUS_H
 
 # include <stdio.h>
 

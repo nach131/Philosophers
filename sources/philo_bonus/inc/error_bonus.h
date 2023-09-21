@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   error_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:01:35 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/12 10:33:46 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:10:43 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef ERROR_BONUS_H
+#define ERROR_BONUS_H
 
-void	ft_message(int err, char *msg);
+void ft_message(int err, char *msg);
 
-typedef enum e_error
+typedef enum e_error_bonus
 {
 	DANGER,
 	WARNING,
 	INFO,
 	SUCCESS,
-}		t_error;
+} t_error_bonus;
 
 typedef enum e_bool
 {
 	FALSE,
 	TRUE,
-}		t_bool;
+} t_bool;
 
 typedef enum e_power
 {
 	OFF,
 	ON,
-}		t_power;
+} t_power;
 
 #endif
 
