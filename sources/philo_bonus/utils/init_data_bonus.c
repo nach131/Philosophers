@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:07:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/21 19:06:45 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/21 22:20:35 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int static init_fork_mutex(t_data *data)
 
 int init_sem(t_data *data)
 {
+
 	char *fork_name;
 	int i;
 	i = -1;

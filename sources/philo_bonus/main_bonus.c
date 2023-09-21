@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/21 18:59:13 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/21 22:17:07 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,17 @@
 // 	}
 // }
 
-int kkk(t_data *data)
-{
+// int kkk(t_data *data)
+// {
 
-	char *fork_name;
-	int i;
-	i = -1;
-	while (++i < data->num_philos)
-	{
-		fork_name = ft_strjoin("fork_", ft_itoa(i));
-	}
-
-	data->spoon = sem_open("sem", O_CREAT | O_EXCL, 0644, data->num_philos);
-	if (data->spoon == (sem_t *)-1)
-	{
-		printf("esto\n");
-		return (1);
-	}
-	return (0);
-}
+// 	data->spoon = sem_open("sem", O_CREAT | O_EXCL, 0644, data->num_philos);
+// 	if (data->spoon == (sem_t *)-1)
+// 	{
+// 		printf("esto\n");
+// 		return (1);
+// 	}
+// 	return (0);
+// }
 
 int main(int argc, char *argv[])
 {

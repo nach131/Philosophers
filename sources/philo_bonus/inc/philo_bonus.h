@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/21 19:04:55 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/21 22:11:40 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ typedef struct s_data
 {
 	// pthread_t		*id;
 	// pthread_mutex_t	*mutex;
-	sem_t *spoon;
+	sem_t **spoon;
 	// sem_t			*m_print;
 	// t_philo			*philo;
-	int				num_philos;
-	int				num_meals;
+	int num_philos;
 	int				t_die;
 	int				t_eat;
 	int				t_sleep;
+	int num_meals;
 	int				is_dead;
 }					t_data;
 

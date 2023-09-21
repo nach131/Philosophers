@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/21 18:40:12 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/21 22:23:20 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,12 @@ void *philosopher_life(void *arg)
 	if (!(philo->num % 2))
 		my_sleep(philo->data->t_eat);
 	// while (philo->eats < philo->data->num_meals)
+	printf("philo:#%d philos %d\n", philo->num, philo->data->num_philos);
 	while (1)
 	// while (philosopher->meals_eaten < MAX_MEALS)
 	{
 
-		printf("toma\n");
+		// printf("toma\n");
 		// take_spoon(philo);
 		// print_does(philo, EAT);
 		// eating(philo);
