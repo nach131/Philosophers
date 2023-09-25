@@ -6,14 +6,13 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:07:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/21 22:20:35 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/21 23:04:14 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "error_bonus.h"
 #include "mylibft_bonus.h"
 #include "philo_bonus.h"
-// #include <semaphore.h>
 #include <limits.h>
 #include <stdlib.h>
 
