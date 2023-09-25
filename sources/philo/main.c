@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/21 00:02:54 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:13:46 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	print_does(t_philo *philo, int type)
 
 static void	free_data(t_data *data)
 {
-	if (data->mutex)
-		free(data->mutex);
+	// if (data->mutex)
+	// 	free(data->mutex);
 	if (data->id)
 		free(data->id);
 	if (data->philo)
@@ -79,7 +79,7 @@ int	main(int argc, char *argv[])
 	}
 	waiting(data);
 	destroy(data);
-	free_data(data);
+	// free_data(data);
 	free(data);
 	return (0);
 }

@@ -72,6 +72,7 @@ all: $(NAME)
 
 $(NAME):	$(ALL_OBJS)
 			@$(CC) $(CFLAGS) $(TSAN) $^ -o $@
+#			@$(CC) $(CFLAGS) $^ -o $@
 			@echo "$(ORANGE) Compilando Ejecutable  ➟  $(RED)$@ $(WHITE)"
 
 clean :

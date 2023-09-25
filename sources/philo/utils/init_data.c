@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:07:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/19 21:05:24 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:17:15 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,44 @@ void	create_philo(t_data *dt, int i)
 	dt->philo[i].data = dt;
 }
 
-int static init_threads_mutex(t_data *dt)
+int static init_mutex(t_data *data)
+{
+	int i;
+	int j;
+
+	i = -1;
+	j = -1;
+	data->mutex = malloc(sizeof(pthread_mutex_t) * data->num_philos);
+	if (!data->mutex)
+	{
+		ft_message(DANGER, "Error malloc mutex");
+		return (1);
+	}
+	while (++i < data->num_philos)
+	{
+		if (pthread_mutex_init(&data->mutex[i], NULL) != 0)
+		{
+			while (++j < i)
+				pthread_mutex_destroy(&data->mutex[j]);
+			ft_message(DANGER, "Error initializing mutex");
+			return (1);
+		}
+	}
+	return (0);
+}
+
+int static init_threads(t_data *dt)
 {
 	int	i;
 
 	i = -1;
 	dt->id = malloc(sizeof(pthread_t) * dt->num_philos);
-	dt->mutex = malloc(sizeof(pthread_mutex_t) * dt->num_philos);
-	if (!dt->id || !dt->mutex)
+	if (!dt->id)
+	{
+		ft_message(DANGER, "Error malloc id philos");
 		return (1);
-	pthread_mutex_init(&dt->m_print, NULL);
-	while (++i < dt->num_philos)
-		pthread_mutex_init(&dt->mutex[i], NULL);
-	i = -1;
-	pthread_mutex_lock(&dt->m_print);
+	}
+	usleep(1000);
 	while (++i < dt->num_philos)
 	{
 		create_philo(dt, i);
@@ -64,7 +88,7 @@ int	init_data(int argc, char *argv[], t_data *data)
 		ft_message(DANGER, "All arguments have to be positive.");
 		return (1);
 	}
-	if (init_threads_mutex(data))
+	if (init_mutex(data) || init_threads(data))
 		return (1);
 	return (0);
 }
