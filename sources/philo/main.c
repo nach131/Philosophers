@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/25 15:13:46 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:24:30 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ void	print_does(t_philo *philo, int type)
 	pthread_mutex_unlock(&philo->data->m_print);
 }
 
-static void	free_data(t_data *data)
-{
-	// if (data->mutex)
-	// 	free(data->mutex);
-	if (data->id)
-		free(data->id);
-	if (data->philo)
-		free(data->philo);
-}
+// static void	free_data(t_data *data)
+// {
+// 	// if (data->mutex)
+// 	// 	free(data->mutex);
+// 	if (data->id)
+// 		free(data->id);
+// 	if (data->philo)
+// 		free(data->philo);
+// }
 
 static void	destroy(t_data *data)
 {
@@ -73,7 +73,7 @@ int	main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	if (init_data(argc, argv, data))
 	{
-		free_data(data);
+		// free_data(data);
 		free(data);
 		return (EXIT_FAILURE);
 	}
