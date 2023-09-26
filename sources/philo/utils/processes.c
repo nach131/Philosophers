@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/26 10:19:20 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:44:22 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	eating(t_philo *philo)
 	{
 		philo->eats++;
 		philo->last_meal = time_elapsed();
-		my_sleep(philo->data->t_eat);
+		my_sleep(philo->data->t_eat - 10);
 	}
 }
 
