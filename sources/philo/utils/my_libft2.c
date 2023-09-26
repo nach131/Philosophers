@@ -6,12 +6,13 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 17:44:17 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/25 15:54:56 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/26 10:04:53 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "error.h"
+#include "philosophers.h"
 
 void static ft_bzero(void *s, size_t n)
 {
@@ -52,6 +53,16 @@ int is_digit(char *str)
 			ft_message(DANGER, "Only number in the arguments");
 			return (1);
 		}
+	}
+	return (0);
+}
+
+int if_neg(t_data *data)
+{
+	if (data->num_philos < 0 || data->t_die < 0 || data->t_eat < 0 || data->t_sleep < 0 || data->num_meals < 0)
+	{
+		ft_message(DANGER, "All arguments have to be positive.");
+		return (1);
 	}
 	return (0);
 }
