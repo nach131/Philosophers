@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/26 09:40:37 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/26 10:18:24 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ void	print_does(t_philo *philo, int type)
 	pthread_mutex_unlock(&philo->data->m_print);
 }
 
-// static void	free_data(t_data *data)
-// {
-// 	// if (data->mutex)
-// 	// 	free(data->mutex);
-// 	if (data->id)
-// 		free(data->id);
-// 	if (data->philo)
-// 		free(data->philo);
-// }
+static void	free_data(t_data *data)
+{
+	if (data->mutex)
+		free(data->mutex);
+	if (data->id)
+		free(data->id);
+	if (data->philo)
+		free(data->philo);
+}
 
 static void	destroy(t_data *data)
 {
@@ -73,28 +73,14 @@ int	main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	if (init_data(argc, argv, data))
 	{
-		// free_data(data);
 		free(data);
 		return (EXIT_FAILURE);
 	}
 	if (waiting(data))
 	{
 		destroy(data);
+		free_data(data);
 		free(data);
 		return (0);
 	}
-	// free_data(data);
-	// return (0);
 }
-
-// TODO
-// errores
-// ./philo 2 300 200 100
-
-//=========================================================================
-
-// ./philo	1 800 200 200
-// ./philo 5 800 200 200
-// ./philo 5 800 200 200 7
-// ./philo 4 410 200 200
-// ./philo 4 310 200 100

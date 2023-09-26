@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/25 17:25:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/26 10:19:20 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	choose_spoon(t_philo *philo, int *spoon_l, int *spoon_r)
 static void	drop_spoon(t_philo *philo)
 {
 	pthread_mutex_unlock(philo->data->mutex + (philo->num
-				% philo->data->num_philos));
+			% philo->data->num_philos));
 	pthread_mutex_unlock(philo->data->mutex + (philo->num - 1));
 }
 
@@ -62,16 +62,8 @@ void	*processes(void *arg)
 	philo->last_meal = 0;
 	if (!(philo->num % 2))
 		my_sleep(philo->data->t_eat);
-
-	// while (philo->eats < philo->data->num_meals && !philo->data->is_dead && !philo->data->pthread)
 	while (philo->eats < philo->data->num_meals && !philo->data->is_dead)
 	{
-		// if (philo->data->pthread)
-		// {
-		// 	printf("toma: %p\n", philo->data->id);
-		// 	// free(philo->data->id);
-		// 	// break;
-		// }
 		take_spoon(philo);
 		print_does(philo, EAT);
 		eating(philo);
@@ -82,11 +74,3 @@ void	*processes(void *arg)
 	}
 	return (NULL);
 }
-
-// TODO
-// time to sleep
-// si ya a muerto no esperar al time slep
-// ./philo 4 310 200 3000
-
-// errores
-// ./philo 2 300 200 100

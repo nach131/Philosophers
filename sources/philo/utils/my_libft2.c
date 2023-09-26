@@ -6,18 +6,18 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 17:44:17 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/26 10:04:53 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/26 10:13:44 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "error.h"
 #include "philosophers.h"
+#include <stdlib.h>
 
-void static ft_bzero(void *s, size_t n)
+void static	ft_bzero(void *s, size_t n)
 {
-	char *ch;
-	size_t i;
+	char	*ch;
+	size_t	i;
 
 	ch = s;
 	i = 0;
@@ -28,9 +28,9 @@ void static ft_bzero(void *s, size_t n)
 	}
 }
 
-void *ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	void *puntero;
+	void	*puntero;
 
 	puntero = malloc(count * size);
 	if (!puntero)
@@ -39,17 +39,18 @@ void *ft_calloc(size_t count, size_t size)
 	return (puntero);
 }
 
-int is_digit(char *str)
+int	is_digit(char *str)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (str[++i] != '\0')
 	{
-		if ((str[i] >= '!' && str[i] <= '/') || (str[i] >= ':' && str[i] <= '~'))
+		if ((str[i] >= '!' && str[i] <= '/') || (str[i] >= ':'
+				&& str[i] <= '~'))
 		{
 			if (str[i] == '-' && i == 0)
-				continue;
+				continue ;
 			ft_message(DANGER, "Only number in the arguments");
 			return (1);
 		}
@@ -57,9 +58,10 @@ int is_digit(char *str)
 	return (0);
 }
 
-int if_neg(t_data *data)
+int	if_neg(t_data *data)
 {
-	if (data->num_philos < 0 || data->t_die < 0 || data->t_eat < 0 || data->t_sleep < 0 || data->num_meals < 0)
+	if (data->num_philos < 0 || data->t_die < 0 || data->t_eat < 0
+		|| data->t_sleep < 0 || data->num_meals < 0)
 	{
 		ft_message(DANGER, "All arguments have to be positive.");
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 23:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/26 10:04:37 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/26 10:15:57 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ typedef struct s_data
 	int				t_eat;
 	int				t_sleep;
 	int				is_dead;
-	int pthread;
 }					t_data;
 
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ UTILS ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -75,12 +74,12 @@ int					init_data(int argc, char *argv[], t_data *data);
 void				*processes(void *arg);
 uint64_t			time_elapsed(void);
 void				print_does(t_philo *philo, int type);
-int waiting(t_data *data);
+int					waiting(t_data *data);
 int					is_die(t_data *data);
 int					all_eating(t_data *data);
 void				my_sleep(uint64_t wait);
 void				err_argc(int argc);
 int					is_digit(char *str);
-int if_neg(t_data *data);
+int					if_neg(t_data *data);
 
 #endif
