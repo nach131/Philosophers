@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:31:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/21 09:25:19 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:25:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "philosophers.h"
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 static void	choose_spoon(t_philo *philo, int *spoon_l, int *spoon_r)
 {
@@ -61,8 +62,16 @@ void	*processes(void *arg)
 	philo->last_meal = 0;
 	if (!(philo->num % 2))
 		my_sleep(philo->data->t_eat);
+
+	// while (philo->eats < philo->data->num_meals && !philo->data->is_dead && !philo->data->pthread)
 	while (philo->eats < philo->data->num_meals && !philo->data->is_dead)
 	{
+		// if (philo->data->pthread)
+		// {
+		// 	printf("toma: %p\n", philo->data->id);
+		// 	// free(philo->data->id);
+		// 	// break;
+		// }
 		take_spoon(philo);
 		print_does(philo, EAT);
 		eating(philo);

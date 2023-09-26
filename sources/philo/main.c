@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:38:49 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/09/25 15:24:30 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/26 09:40:37 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,24 @@ int	main(int argc, char *argv[])
 		free(data);
 		return (EXIT_FAILURE);
 	}
-	waiting(data);
-	destroy(data);
+	if (waiting(data))
+	{
+		destroy(data);
+		free(data);
+		return (0);
+	}
 	// free_data(data);
-	free(data);
-	return (0);
+	// return (0);
 }
 
 // TODO
 // errores
 // ./philo 2 300 200 100
+
+//=========================================================================
+
+// ./philo	1 800 200 200
+// ./philo 5 800 200 200
+// ./philo 5 800 200 200 7
+// ./philo 4 410 200 200
+// ./philo 4 310 200 100
